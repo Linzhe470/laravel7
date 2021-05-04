@@ -5,297 +5,162 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boostrap-homework</title>
-    <link rel="icon" href="./img/svg-export/p-logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+    <title>Digipack-index</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
     <style>
-        .navbar .barmenu ul li {
-            padding: 0 10px;
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
         }
 
-        .jumbotron,
-        .jumbotron-fluid {
-            background-color: transparent;
+        #nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            justify-content: space-between;
         }
 
-        .p-color {
-            color: #6366F1;
+        #nav-logo {
+            width: 6.625rem;
+            height: 3.75rem;
         }
 
-        .pb-color {
-            background-color: #6366F1;
+        #carouselExampleIndicators>ol>li {
+            width: 8px;
+            height: 8px;
         }
 
-        .container {
-            max-width: 1500px;
-            padding: 50px 0;
+        .lightblue {
+            background-color: #E0E7FF;
         }
 
-        .card {
-            border: none;
+        #form-box {
+            right: 9%;
+            top: 50%;
+            transform: translateY(-50%);
+            min-width: 353px;
         }
 
+        @media (max-width:768px) {
+            #nav-logo {
+                width: 45px;
+                height: 30px;
+            }
 
-        .bg-faded {
-            background-color: #F3F4F6;
-            padding: 20px;
-            margin: 0;
-            border-radius: 18px;
-        }
-
-        .wb-color {
-            background-color: white;
-        }
-
-        .bb-color {
-            background-color: black;
-        }
-
-        .nav-link {
-            color: grey;
-        }
-
-        .barmenu .nav-item:hover {
-            background-color: #F3F4F6;
-            border-radius: 5px;
-        }
-
-        .goout{
-            text-align: center;
-            font-size: 26px;
-        }
-        .navbar .barmenu ul{
-            display: flex;
-            align-items: center;
-        }
-        .carousel-item{
-            height: calc(100vh - 100px);
+            #title-box>h2 {
+                font-size: 24px;
+            }
         }
     </style>
-
     @yield('css')
-    
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="container p-1" style="width: 80%;">
-
-            <!-- Just an image -->
-            <a class="navbar-brand" href="https://lesson-bootstrap.dev-hub.io/" target="_blank">
-                <img src="./img/svg-export/svgexport-1.svg" width="80%" height="" alt="">
-            </a>
-
-            <div class="barmenu ">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">
-                                Blog
-                                <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"> Portfolio
-                                <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"> About
-                                <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
-                        </li>
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Link#1</a>
-                            <a class="dropdown-item" href="#">Link#2</a>
-                            <a class="dropdown-item" href="#">Link#3</a>
-
+    <header class="pt-md-2 mb-1 bd-mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white" id="nav">
+            <a class="navbar-brand" href="#"><img src="{{ asset('./img/svg-export/svgexport-1.svg') }}" alt="" id="nav-logo"></a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span>
+                    <img src="{{ asset('./image/svgexport-2.svg') }}" alt="">
+                </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link mr-2 text-center" href="#">Blog<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body ml-md-4 text-center" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body mx-md-4 text-center" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body ml-md-3 text-center" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown mx-md-3 d-flex justify-content-center">
+                        <div class="nav-item mr-3">
+                            <a class="nav-link text-body ml-md-3" href="./Digipack-shoppingcart-1.html"><i
+                                    class="fas fa-shopping-cart fa-2x"></i></a>
                         </div>
-
+                        <a class="nav-link text-body" href="" id="navbarDropdownMenuLink"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle fa-2x"></i>
+                        </a>
+                        <div id="dropdown" class="dropdown-menu dropdown-menu-right position-absolute"
+                            style="width: 100%;" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./Digipack-login.html">Login</a>
+                        </div>
                     </li>
-                    <li class="nav-item active goout">
-                        <a class="nav-link" href="./cart.vol.01.html" ><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active goout">
-                        <a class="nav-link" href="./login.html"><i class="fas fa-user-circle"></i> <span class="sr-only">(current)</span></a>
-                    </li>
-
-
-                    </ul>
-
-                </div>
-
-
-
+                </ul>
             </div>
-        </div>
-
-
-
-
-    </nav>
+        </nav>
+    </header>
 
     <main>
+
 
         @yield('main')
 
     </main>
 
     <footer>
-        <div class="container">
-            <div class="row ">
-                <div class="col-3">
-                    <div class="container p-0">
-
-                        <div class=" d-flex align-items-center justify-content-start mb-2">
-
-                            <img src={{ asset('./img/svg-export/svgexport-20.svg') }} alt="...">
-
-                            <h5 class="card-title m-0 ml-3">數位方塊</h5>
-
-                        </div>
-
-                        <div>
-                            <p>Air plant banjo lyft occupy retro adaptogen indego</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-8 d-flex justify-content-between">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link disabled font-weight-blad" href="#" tabindex="-1" aria-disabled="true"
-                                style="color: black;">CATEGORIES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">First Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Second Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Third Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Fourth Link
-                            </a>
-                        </li>
-
-                    </ul>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link disabled font-weight-blad" href="#" tabindex="-1" aria-disabled="true"
-                                style="color: black;">CATEGORIES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">First Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Second Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Third Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Fourth Link
-                            </a>
-                        </li>
-
-                    </ul>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link disabled font-weight-blad" href="#" tabindex="-1" aria-disabled="true"
-                                style="color: black;">CATEGORIES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">First Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Second Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Third Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Fourth Link
-                            </a>
-                        </li>
-
-                    </ul>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link disabled font-weight-blad" href="#" tabindex="-1" aria-disabled="true"
-                                style="color: black;">CATEGORIES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">First Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Second Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Third Link
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Fourth Link
-                            </a>
-                        </li>
-
-                    </ul>
-
-
-
-                </div>
-
-
+        <div class="row mr-0 py-md-5 mb-5 px-5 justify-content-between align-items-center d-flex">
+            <div class="text-center text-md-left col col-md-3 col-lg-2 pb-4">
+                <img src="{{ asset('./img/svg-export/svgexport-20.svg') }}" alt="">
+                <span class="h5 pl-2">數位方塊</span>
+                <p class="pt-2 text-muted"><small>Air plant banjo lyft occupy retro adaptogen indego</small></p>
             </div>
-        </div>
-        <div class="container-fluid" style="background-color:lightgray;">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <p>© 2020 Tailblocks — @knyttneve</p>
-                    <div>
-                        <img src={{ asset('./img/svg-export/svgexport-21.svg') }} alt="...">
-                        <img src={{ asset('./img/svg-export/svgexport-22.svg') }} alt="...">
-                        <img src={{ asset('./img/svg-export/svgexport-23.svg') }} alt="...">
+            <div class="d-md-flex col-sm-8 col-md-9 col-lg-10 justify-content-around">
+                <div class="col-md-5 d-sm-flex text-center text-md-right">
+                    <div class="col pb-4">
+                        <h6>CATEGORIES</h6>
+                        <div class="text-muted">First Link</div>
+                        <div class="text-muted">Second Link</div>
+                        <div class="text-muted">Third Link</div>
+                        <div class="text-muted">Fourth Link</div>
+                    </div>
+                    <div class="col pb-4">
+                        <h6>CATEGORIES</h6>
+                        <div class="text-muted">First Link</div>
+                        <div class="text-muted">Second Link</div>
+                        <div class="text-muted">Third Link</div>
+                        <div class="text-muted">Fourth Link</div>
+                    </div>
+                </div>
+                <div class="col-md-5 d-sm-flex text-center text-md-left">
+                    <div class="col pb-4">
+                        <h6>CATEGORIES</h6>
+                        <div class="text-muted">First Link</div>
+                        <div class="text-muted">Second Link</div>
+                        <div class="text-muted">Third Link</div>
+                        <div class="text-muted">Fourth Link</div>
+                    </div>
+                    <div class="col pb-4">
+                        <h6>CATEGORIES</h6>
+                        <div class="text-muted">First Link</div>
+                        <div class="text-muted">Second Link</div>
+                        <div class="text-muted">Third Link</div>
+                        <div class="text-muted">Fourth Link</div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
-
-
+        <div class="bg-light d-md-flex py-3 px-5 justify-content-between text-center align-items-center">
+            <div><small>© 2020 Tailblocks — @knyttneve</small></div>
+            <div class="d-flex align-items-center justify-content-center">
+                <img src="{{ asset('./image/svgexport-21.svg') }}" alt="" class="px-1">
+                <img src="{{ asset('./image/svgexport-22.svg') }}" alt="" class="px-1">
+                <img src="{{ asset('./image/svgexport-23.svg') }}" alt="" class="px-1">
+                <div class="pt-1">
+                    <i class="fab fa-linkedin-in px-2 text-secondary"
+                        style="font-size: 24px; "></i></div>
+            </div>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -309,7 +174,6 @@
         crossorigin="anonymous"></script>
 
     @yield('js')
-
 </body>
 
 </html>

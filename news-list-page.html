@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news-list-page</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: '微軟正黑體';
+    }
+
+    html {
+        width: 100%;
+    }
+
+    section {
+        width: 1400px;
+        max-width: 1400px;
+    }
+
+    /* flex */
+    html,
+    .top-title,
+    .top-sub {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-title {
+        flex-direction: column;
+    }
+
+    .top-title h1 {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .top-sub {
+        justify-content: flex-end;
+    }
+
+    .top-sub p {
+        padding: 10px;
+    }
+
+    .top-sub p span:last-of-type {
+        color: red;
+    }
+
+    .img-size {
+        width: 75px;
+        height: 75px;
+    }
+
+    .lists {
+        display: flex;
+        padding: 60px 0;
+    }
+
+    .img-left {
+        width: 480px;
+        height: 320px;
+        margin: 0 30px;
+        background-image: url(https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .text-right {
+        display: flex;
+        flex: 1;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+
+    }
+
+    .text-right>* {
+        padding: 10px;
+        padding-left: 0;
+    }
+
+    .text-right .tag {
+        background-color: #A44CC4;
+        color: white;
+        padding: 10px 30px;
+    }
+
+    .text-right a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+    }
+    .text-right a:hover {
+        color: #DB3B00;
+
+    }
+
+
+
+    .text-right p:nth-of-type(1) {
+        font-size: 24px;
+        color: #DB3B00;
+        font-weight: 700;
+    }
+
+    .text-right .words p {
+        color: black;
+        font-size: 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+   
+    }
+</style>
+
+<body>
+    <main>
+        <section>
+            <div class="top-title">
+                <img class="img-size" src="https://www.taiwan.net.tw/att/topTitleImg/21_0001001.svg" alt="">
+                <h1>最新消息</h1>
+            </div>
+            <div class="top-sub">
+
+                <p>
+                    <span>資料總筆數：</span>
+                    <span>175 </span>
+                </p>
+                <p>
+                    <span>每頁筆數：</span>
+                    <span>10 </span>
+                </p>
+                <p>
+                    <span>總頁數：</span>
+                    <span>18</span>
+                </p>
+                <p>
+                    <span>目前頁次：</span>
+                    <span>1</span>
+                </p>
+
+
+            </div>
+            <hr>
+        </section>
+
+        <section class="lists-section">
+            <div class="lists">
+
+                <div class="img-left">
+
+                </div>
+
+                <div class="text-right">
+                    <div class="tag">最新消息</div>
+                    <a href="#">
+                        <h2>經典小鎮升級3.0正式開跑　小鎮逗鎮趣 集章抽好禮</h2>
+                    </a>
+                    <p>2021-05-03</p>
+                    <div class="words">
+                        <p>為推動「小鎮漫遊」，交通部觀光局於108年配合「小鎮漫遊年」遴選40個特色小鎮，109年延續小鎮熱潮，配合「脊梁山脈旅遊年」遴選出30個經典/山城小鎮，今（110）年配合「自行車旅遊年」遴選出30個經典/自行車小鎮，邀請大家慢騎自行車小鎮，領略小鎮在地之美。
+                            交通部觀光局張錫聰局長表示，為推動小</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <hr>
+        </section>
+    </main>
+
+
+
+
+</body>
+
+</html>
