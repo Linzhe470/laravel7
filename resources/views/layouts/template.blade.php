@@ -283,11 +283,9 @@
                 <div class="row d-flex justify-content-between">
                     <p>© 2020 Tailblocks — @knyttneve</p>
                     <div>
-                        <img src={{ asset('') }} alt="...">
+                        <img src={{ asset('./img/svg-export/svgexport-21.svg') }} alt="...">
                         <img src={{ asset('./img/svg-export/svgexport-22.svg') }} alt="...">
-
-                        <img src="./img/svg-export/svgexport-23.svg" alt="...">
-
+                        <img src={{ asset('./img/svg-export/svgexport-23.svg') }} alt="...">
                     </div>
                 </div>
             </div>
