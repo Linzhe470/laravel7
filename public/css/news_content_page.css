@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: '微軟正黑體';
+}
+
+html {
+    width: 100%;
+}
+
+section {
+    width: 1400px;
+    max-width: 1400px;
+}
+
+/* flex */
+html,
+.top-title,
+.top-sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-title {
+    flex-direction: column;
+}
+
+.top-title h1 {
+    font-size: 30px;
+    padding: 10px;
+}
+
+.top-sub {
+    justify-content: flex-start;
+}
+
+.top-sub p {
+    padding: 10px;
+}
+
+.top-sub p span:last-of-type {
+    color: red;
+}
+
+.img-size {
+    width: 75px;
+    height: 75px;
+}
+
+.lists {
+    display: flex;
+    padding: 60px 0;
+}
+
+.lists p{
+    font-size: 18px;
+}
