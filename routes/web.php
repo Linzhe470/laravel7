@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +20,50 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('news','NewsController@index');
+
+Route::get('news/create','NewsController@create');
+Route::get('news/make/{title}/{view}','NewsController@make');
+
+
+// 指向ID
+Route::get('news/update/{id}','NewsController@update');
+Route::get('news/delete/{id}','NewsController@delete');
+
+
+Route::get('news/detail/{id}','NewsController@innerdetail');
+
+
+Route::get('news/detail','NewsController@detail');
+
+
+
+
+
+// Route::get('news/content', function () {
+//     return view('news/news_content_page');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('test', function () {
     $data = 123;

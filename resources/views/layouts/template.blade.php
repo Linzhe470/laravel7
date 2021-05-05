@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digipack-index</title>
+    <title>
+
+        @yield('title')
+
+    </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -54,13 +58,15 @@
             }
         }
     </style>
+
     @yield('css')
+
 </head>
 
 <body>
     <header class="pt-md-2 mb-1 bd-mb-3">
         <nav class="navbar navbar-expand-lg navbar-light bg-white" id="nav">
-            <a class="navbar-brand" href="#"><img src="{{ asset('./img/svg-export/svgexport-1.svg') }}" alt="" id="nav-logo"></a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('./img/svg-export/svgexport-1.svg') }}" alt="" id="nav-logo"></a>
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
                 data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -71,7 +77,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link mr-2 text-center" href="#">Blog<span class="sr-only">(current)</span></a>
+                        <a class="nav-link mr-2 text-center" href="/news">News<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-body ml-md-4 text-center" href="#">Portfolio</a>
@@ -174,6 +180,7 @@
         crossorigin="anonymous"></script>
 
     @yield('js')
+
 </body>
 
 </html>
