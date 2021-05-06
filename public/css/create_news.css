@@ -1,0 +1,40 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+input{
+    height: 40px;
+    width: 50vw;
+}
+textarea{
+    width: 50vw;
+}
+.mx-auto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-group{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+label{
+    margin-right: 10px;
+}
+button{
+    width: 20vw;
+    padding: 10px;
+    border: none;
+    background-color: #6366F1;
+    color: white;
+    border-radius: 50px;
+    justify-self: flex-end;
+}
+button:hover{
+    background-color: #4c4fd8;
+}
