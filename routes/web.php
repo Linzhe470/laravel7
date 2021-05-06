@@ -21,9 +21,27 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('news','NewsController@index');
+Route::get('news','NewsController@newspage');
 
+// 新增資料頁
 Route::get('news/create','NewsController@create');
+// 儲存資料!!使用POST
+Route::post('news/store','NewsController@store');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('news/createpush','NewsController@creatpush');
 Route::get('news/make/{title}/{view}','NewsController@make');
 
 

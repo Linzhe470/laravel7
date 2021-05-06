@@ -2,24 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+// DB DATA BASE 直接拿東西 安全性低
+
+
 class NewsController extends Controller
 {
-    public function index(){
+    public function newspage(){
 
-        $newsData = DB::table('news')->get();
-        // dd($newsData);
-        // dd($newsData[0]->date);
-
+        $newsData = News::get();
+        // dd($newsData[0]->title);
         return view('news.news_list_page',compact('newsData'));
+
+
+        // $newsData = DB::table('news')->get();
+        // return view('news.news_list_page',compact('newsData'));
     }
-    
+
+
+
+
     public function create()
     {
-        DB::table('news')->insert([
 
+        return view('news.create_news');
+    }
+    
+    public function store(Request $request)
+    {
+        // 取資料
+        // Request $request取得輸入的資料
+
+        // dd($request->all());
+        // dd($request->title);
+        // 儲存資料至資料庫
+
+        News::create([
+            'title' => $request->title,
+            'date' => $request->date,
+            'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
+            'content' => $request->content,
+            'view' => 0
+                ]);
+        // 返回最新消息列表頁
+        return redirect('news');
+
+        // return view('news.create_news',compact('newsData'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    public function createpush()
+    {
+        News::create([
         'title' => 'London to Paris',
         'date' => '2020-05-05',
         'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
@@ -27,12 +82,22 @@ class NewsController extends Controller
         'view' => 4
 
             ]);
+        // DB::table('news')->insert([
+
+        // 'title' => 'London to Paris',
+        // 'date' => '2020-05-05',
+        // 'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
+        // 'content' => 'weinfwejfiwjeiofjwioejf',
+        // 'view' => 4
+
+        //     ]);
 
     }
 
     public function make($title,$view)
     {
-        DB::table('news')->insert([
+        News::create([
+        // DB::table('news')->insert([
         
 
         'title' => $title,
@@ -47,9 +112,10 @@ class NewsController extends Controller
 
     public function update($id)
     {
-        DB::table('news')
-        ->where('id',$id)
-        ->update(['content'=>
+        News::where('id',$id)->update(['content'=>
+        // DB::table('news')
+        // ->where('id',$id)
+        // ->update(['content'=>
         '為推動「小鎮漫遊」，交通部觀光局於108年配合「小鎮漫遊年」遴選40個特色小鎮，109年延續小鎮熱潮，
         配合「脊梁山脈旅遊年」遴選出30個經典/山城小鎮，今（110）年配合「自行車旅遊年」遴選出30個經典/
         自行車小鎮，邀請大家慢騎自行車小鎮，領略小鎮在地之美。
@@ -82,32 +148,29 @@ class NewsController extends Controller
     
     public function delete($id)
     {
-        DB::table('news')
-        ->where('id',$id)
-        ->delete();
+        News::where('id',$id)->delete();
+        // DB::table('news')
+        // ->where('id',$id)
+        // ->delete();
     }
 
 
     public function innerdetail($id){
-        $newsData = DB::table('news')->find($id);
+        $newsData =  News::find($id);
+        // DB::table('news')=News::
+        // $newsData = DB::table('news')->find($id);
         // dd( $newsData);
         // dd( $newsData->title);
-        // 輸入網址錯誤時??
         // dd($id);
         // dd($allnewsData->id);
-
-        if ($newsData->view!=0) {
-            return view('news.news_content_page',compact('newsData'));
-        }
-        elseif ($newsData->view==0) {
-            return redirect('news');
-        }
+        return view('news.news_content_page',compact('newsData'));
+    
     }
  
 
 
-    public function detail(){
-        return view('news.news_content_page');
-    }
+    // public function detail(){
+    //     return view('news.news_content_page');
+    // }
 
 }

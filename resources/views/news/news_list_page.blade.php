@@ -12,6 +12,7 @@
 @section('main')
 
     <section>
+        <hr>
         <div class="top-title">
             <img class="img-size" src="https://www.taiwan.net.tw/att/topTitleImg/21_0001001.svg" alt="">
             <h1>最新消息</h1>
@@ -35,7 +36,13 @@
                 <span>1</span>
             </p>
 
-
+        </div>
+        <div class="top-sub">
+            <a href="/news/create">
+                <div class="create">
+                    建立
+                </div>
+            </a>
         </div>
         <hr>
     </section>

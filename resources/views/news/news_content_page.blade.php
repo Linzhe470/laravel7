@@ -13,6 +13,7 @@
 
 
     <section>
+        <hr>
         <div class="top-title">
             <h1>{{$newsData->title}}</h1>
         </div>

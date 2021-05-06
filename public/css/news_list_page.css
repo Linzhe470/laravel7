@@ -33,12 +33,27 @@
         padding: 10px;
     }
 
-    .top-sub {
+    .top-sub,.top-sub-btn {
         justify-content: flex-end;
     }
 
     .top-sub p {
         padding: 10px;
+    }
+
+    .create{
+        padding: 10px 40px;
+        border: none;
+        background-color: #6366F1;
+        color: white;
+        border-radius: 50px;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+    }
+    .create:hover{
+        background-color: #4c4fd8;
     }
 
     .top-sub p span:last-of-type {
@@ -111,3 +126,4 @@
         overflow: hidden;
    
     }
+
