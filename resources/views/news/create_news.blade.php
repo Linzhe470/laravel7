@@ -37,6 +37,12 @@ Digipack-create
             <label for="">圖片</label>
             <input type="text" id="img" name="img">
         </div>
-
-        <div class="form-group"/
+        
+        <div class="form-group">
+            <label for="">內容</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+ 
 @endsection

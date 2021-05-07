@@ -465,16 +465,28 @@ Digipack-index
             class="position-relative"></iframe>
         <div class="col-10 col-md-3 px-5 bg-light position-absolute py-4 shadow-sm p-3 mb-5 bg-white rounded border"
             id="form-box">
-            <span class="h5">Feedback</span>
+            <span class="h5">聯絡我們</span>
             <p class="pt-2">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1">姓名</label>
+                    <input type="text" class="form-control" id="exampleInputName">
                     <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Message</label>
+                    <label for="exampleInputEmail1">信箱</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">電話</label>
+                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">主旨</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">內文</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" style="height: 128px;">
                 </div>
                 <button type="submit" class="btn btn-primary mb-3" style="width: 100%;">Button</button>

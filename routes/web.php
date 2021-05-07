@@ -18,15 +18,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
+Route::post('/contact_us','ContractUsController@store');
+
+// 產生畫面
 Route::get('news','NewsController@newspage');
 
-// 新增資料頁
+// 新增資料
 Route::get('news/create','NewsController@create');
-// 儲存資料!!使用POST
-Route::post('news/store','NewsController@store');
+// 儲存資料
+Route::post('news/store','NewsController@store');// 儲存資料!!使用POST
+
+
+// 修改資料
+Route::get('news/edit/{id}','NewsController@edit'); // 取得該筆資料
+// 更新資料
+Route::post('news/update/{id}','NewsController@update');// 儲存資料!!使用POST
+
+
+// 刪除資料
+Route::get('news/delete/{id}','NewsController@delete');
 
 
 
@@ -46,8 +59,7 @@ Route::get('news/make/{title}/{view}','NewsController@make');
 
 
 // 指向ID
-Route::get('news/update/{id}','NewsController@update');
-Route::get('news/delete/{id}','NewsController@delete');
+Route::get('news/updatepush/{id}','NewsController@update');
 
 
 Route::get('news/detail/{id}','NewsController@innerdetail');
@@ -152,3 +164,7 @@ Route::get('lesson1', function () {
 
     return 'hellow world';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

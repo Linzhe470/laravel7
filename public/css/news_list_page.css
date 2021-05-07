@@ -126,4 +126,56 @@
         overflow: hidden;
    
     }
+    .functions{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .functions  .delete-btn ,.functions  .edit-btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+    .kill{
+        background-color: rgb(0, 0, 0);
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+    }
+    .kill:hover{
+        background-color: rgb(148, 0, 0);
+    }
+    .delete{
+        background-color: red;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+    }
+    .delete:hover{
+        background-color: rgb(212, 32, 32);
+    }
+    
+    .edit{
+        background-color: teal;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+    }
+    .edit:hover{
+        background-color: rgb(6, 95, 95);
+    }
+    .lists{
+        position: relative;
+    }
+
+    .functions:hover~.lists::after{
+        content: '';
+        background-color:  #A44CC4;
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height:18vw;
+    }
 

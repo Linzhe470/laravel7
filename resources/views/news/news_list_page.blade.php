@@ -13,10 +13,18 @@
 
     <section>
         <hr>
+        <div class="top-sub">
+            <a href="/news/create">
+                <div class="create">
+                    建立 +
+                </div>
+            </a>
+        </div>
         <div class="top-title">
             <img class="img-size" src="https://www.taiwan.net.tw/att/topTitleImg/21_0001001.svg" alt="">
             <h1>最新消息</h1>
         </div>
+
         <div class="top-sub">
 
             <p>
@@ -37,19 +45,30 @@
             </p>
 
         </div>
-        <div class="top-sub">
-            <a href="/news/create">
-                <div class="create">
-                    建立
-                </div>
-            </a>
-        </div>
+
         <hr>
     </section>
 
     @foreach ($newsData as $news)
 
     <section class="lists-section">
+        <div class="functions">
+            <button class="kill" data-herf="/news/delete/{{$news->id}}">
+                🗡 殺害
+            </button>
+
+            <a href="/news/delete/{{$news->id}}" class="delete-btn">
+                <div class="delete">
+                    X 刪除
+                </div>
+            </a>
+
+            <a href="/news/edit/{{$news->id}}" class="edit-btn">
+                <div class="edit">
+                    🖍 編輯
+                </div>
+            </a>
+        </div>
         <div class="lists">
 
             <div class="img-left" style="background-image: url({{$news->img}})">
@@ -64,9 +83,14 @@
                 <div class="words">
                     <p>{{$news->content}}</p>
                 </div>
+                
+                
+
 
             </div>
+
         </div>
+
         <hr>
     </section>
     
@@ -76,5 +100,19 @@
 @endsection
 
 @section('js')
+<script>
+    var btnDelete =document.querySelectorAll('.kill');
+    btnDelete.forEach(function (btn) {
+        btn.addEventListener('click',function() {
+                console.log(this);
+            if (confirm('真的?')) {
+                location.href = this.getAttribute('data-herf');
+            }
+            
+        })
+        
+    });
+
+</script>
 @endsection
 

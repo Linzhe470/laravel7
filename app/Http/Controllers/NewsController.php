@@ -6,31 +6,29 @@ use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-// DB DATA BASE 直接拿東西 安全性低
+// DB 直接拿東西 安全性低
 
 
 class NewsController extends Controller
 {
-    public function newspage(){
+    public function newspage()
+    {
 
         $newsData = News::get();
         // dd($newsData[0]->title);
-        return view('news.news_list_page',compact('newsData'));
+        return view('news.news_list_page', compact('newsData'));
 
 
         // $newsData = DB::table('news')->get();
         // return view('news.news_list_page',compact('newsData'));
     }
 
-
-
-
     public function create()
     {
-
         return view('news.create_news');
     }
-    
+
+
     public function store(Request $request)
     {
         // 取資料
@@ -46,11 +44,57 @@ class NewsController extends Controller
             'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
             'content' => $request->content,
             'view' => 0
-                ]);
+        ]);
         // 返回最新消息列表頁
         return redirect('news');
 
         // return view('news.create_news',compact('newsData'));
+    }
+
+
+    public function edit($id)
+    {
+        $newsData =  News::find($id);
+        // 用ID去找
+        // $newsData =  News::where('id',$id);
+        // dd( $newsData);
+        return view('news.edit_news', compact('newsData'));
+    }
+
+
+    public function update($id, Request $request)
+    {
+        // find($id) 專門取id之物件用 不用於其他地方
+        // News::find($id)->update($request->all());
+
+
+        // News::where('id', $id)->update($request->all());錯誤
+
+        // where('資料標題', 符合資料標題名稱條件) 將取得資料包至陣列中，可唯一值以上
+        // where()所取出陣列，以get()取得陣列內所有資料，以first()取得陣列內首筆資料
+
+        News::where('id', $id)->first()->update($request->all());
+        // News::where('id', $id)->get()->update($request->all());
+        
+        // News::where('id', $id)->update([
+        //     'title' => $request->title,
+        //     'date' => $request->date,
+        //     'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
+        //     'content' => $request->content,
+        //     'view' => 0
+        // ]);
+
+        return redirect('news');
+    }
+
+
+    public function delete($id)
+    {
+        News::where('id', $id)->delete();
+        // DB::table('news')
+        // ->where('id',$id)
+        // ->delete();
+        return redirect('news');
     }
 
 
@@ -71,17 +115,16 @@ class NewsController extends Controller
 
 
 
-    
     public function createpush()
     {
         News::create([
-        'title' => 'London to Paris',
-        'date' => '2020-05-05',
-        'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
-        'content' => 'weinfwejfiwjeiofjwioejf',
-        'view' => 4
+            'title' => 'London to Paris',
+            'date' => '2020-05-05',
+            'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
+            'content' => 'weinfwejfiwjeiofjwioejf',
+            'view' => 4
 
-            ]);
+        ]);
         // DB::table('news')->insert([
 
         // 'title' => 'London to Paris',
@@ -94,25 +137,24 @@ class NewsController extends Controller
 
     }
 
-    public function make($title,$view)
+    public function make($title, $view)
     {
         News::create([
-        // DB::table('news')->insert([
-        
+            // DB::table('news')->insert([
 
-        'title' => $title,
-        'date' => '2020-05-05',
-        'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
-        'content' => 'weinfwejfiwjeiofjwioejf',
-        'view' => $view+100
 
-            ]);
+            'title' => $title,
+            'date' => '2020-05-05',
+            'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
+            'content' => 'weinfwejfiwjeiofjwioejf',
+            'view' => $view + 100
 
+        ]);
     }
 
-    public function update($id)
+    public function updatepush($id)
     {
-        News::where('id',$id)->update(['content'=>
+        News::where('id', $id)->update(['content' =>
         // DB::table('news')
         // ->where('id',$id)
         // ->update(['content'=>
@@ -145,17 +187,12 @@ class NewsController extends Controller
         
         ']);
     }
-    
-    public function delete($id)
+
+
+
+
+    public function innerdetail($id)
     {
-        News::where('id',$id)->delete();
-        // DB::table('news')
-        // ->where('id',$id)
-        // ->delete();
-    }
-
-
-    public function innerdetail($id){
         $newsData =  News::find($id);
         // DB::table('news')=News::
         // $newsData = DB::table('news')->find($id);
@@ -163,10 +200,9 @@ class NewsController extends Controller
         // dd( $newsData->title);
         // dd($id);
         // dd($allnewsData->id);
-        return view('news.news_content_page',compact('newsData'));
-    
+        return view('news.news_content_page', compact('newsData'));
     }
- 
+
 
 
     // public function detail(){
