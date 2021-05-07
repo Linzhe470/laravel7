@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,23 +24,27 @@ Route::get('/', function () {
 
 Route::post('/contact_us','ContractUsController@store');
 
-// 產生畫面
-Route::get('news','NewsController@newspage');
+Route::prefix('news')->group(function(){
 
-// 新增資料
-Route::get('news/create','NewsController@create');
-// 儲存資料
-Route::post('news/store','NewsController@store');// 儲存資料!!使用POST
+    // 產生畫面
+    Route::get('/','NewsController@newspage');
+    
+    // 新增資料
+    Route::get('/create','NewsController@create');
+    // 儲存資料
+    Route::post('/store','NewsController@store');// 儲存資料!!使用POST
+    
+    
+    // 修改資料
+    Route::get('/edit/{id}','NewsController@edit'); // 取得該筆資料
+    // 更新資料
+    Route::post('/update/{id}','NewsController@update');// 儲存資料!!使用POST
+    
+    
+    // 刪除資料
+    Route::get('/delete/{id}','NewsController@delete');
 
-
-// 修改資料
-Route::get('news/edit/{id}','NewsController@edit'); // 取得該筆資料
-// 更新資料
-Route::post('news/update/{id}','NewsController@update');// 儲存資料!!使用POST
-
-
-// 刪除資料
-Route::get('news/delete/{id}','NewsController@delete');
+});
 
 
 

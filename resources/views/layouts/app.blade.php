@@ -1,3 +1,5 @@
+{{-- 這裡是登入頁的天婦羅 --}}
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -9,8 +11,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -30,15 +33,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                {{-- 抽屜 --}}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="news">最新消息</a>
+                        </li>
+                        @else
+                        @endguest
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        {{-- 無登入畫面 --}}
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -74,7 +85,12 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('main')
         </main>
     </div>
+    {{-- 改動 --}}
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('js')
 </body>
 </html>
