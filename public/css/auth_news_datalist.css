@@ -1,0 +1,24 @@
+main{
+    padding: 30px;
+}
+
+
+.functions button{
+    width: 5rem;
+    margin-bottom: 1rem;
+
+    border: none;
+}
+.functions button a{
+    color: white;
+    text-decoration: none;
+}
+.functions button a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+table.dataTable tbody td {
+    vertical-align: top;
+    
+}

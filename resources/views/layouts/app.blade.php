@@ -1,4 +1,4 @@
-{{-- 這裡是登入頁的天婦羅 --}}
+{{-- 這裡是AUTH的天婦羅 --}}
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -20,6 +20,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 9999999;
+        }
+        main{
+            margin-top: 3rem;
+        }
+    </style>
     @yield('css')
 </head>
 <body>
@@ -39,9 +51,38 @@
                     <ul class="navbar-nav mr-auto">
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="news">最新消息</a>
+                            <a class="nav-link" href="{{ url('/index') }}">數位方塊</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/news') }}">最新消息</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="{{ url('/news') }}">編輯🖍</a>
                         </li>
                         @else
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/home') }}">家</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                前台
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="index">數位方塊</a>
+                                <a class="dropdown-item" href="news/list">最新消息</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/news') }}">編輯🖍</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/news/create') }}">新增+</a>
+                        </li>
+                       
                         @endguest
 
                     </ul>

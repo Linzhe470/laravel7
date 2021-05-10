@@ -1,5 +1,6 @@
 {{-- 繼承哪一個模板 --}}
-@extends('layouts.template')
+@extends('layouts.app')
+
 
 @section('title')
 Digipack-create

@@ -1,15 +1,17 @@
 {{-- 繼承哪一個模板 --}}
-@extends('layouts.template')
+@extends('layouts.app')
+
 
 @section('title')
 Digipack-create
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="/css/create_news.css">
+<link rel="stylesheet" href="{{ asset('/css/create_news.css') }}">
 @endsection
 
 @section('main')
+<h1>請開始你的編輯</h1>
 {{-- 首頁     /index --}}
 {{-- 新增頁面 /news/create --}}
 {{-- 儲存頁面 /news/store --}}

@@ -467,32 +467,47 @@ Digipack-index
             id="form-box">
             <span class="h5">聯絡我們</span>
             <p class="pt-2">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
-            <form>
+
+
+            <form action="/contactus/store" method="POST" class="mx-auto">
+                @csrf
+
                 <div class="form-group">
-                    <label for="exampleInputEmail1">姓名</label>
-                    <input type="text" class="form-control" id="exampleInputName">
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    <label for="">姓名</label>
+                    <input type="text" name="name" 
+                    class="form-control"  >
+                    {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
+                </div>
+
+                <div class="form-group">
+                    <label for="">信箱</label>
+                    <input type="email"  name="email" 
+                    class="form-control" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label for="">電話</label>
+                    <input type="tel" name="tel" 
+                    class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="">主旨</label>
+                    <input type="text" name="title" 
+                    class="form-control" >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">信箱</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="">內文</label>
+                    <input type="text" name="message" 
+                    class="form-control"  style="height: 128px;">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">電話</label>
-                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">主旨</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">內文</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" style="height: 128px;">
-                </div>
+
                 <button type="submit" class="btn btn-primary mb-3" style="width: 100%;">Button</button>
                 <div style="font-size: 12px;">Chicharrones blog helvetica normcore iceland tousled brook viral
                     artisan.</div>
             </form>
+
+
         </div>
     </section>
 

@@ -1,6 +1,5 @@
 {{-- 繼承哪一個模板 --}}
-@extends('layouts.app')
-
+@extends('layouts.template')
 
 @section('title')
     News_list_page
@@ -14,13 +13,13 @@
 
     <section>
         <hr>
-        <div class="top-sub">
+        {{-- <div class="top-sub">
             <a href="/news/create">
                 <div class="create">
                     建立 +
                 </div>
             </a>
-        </div>
+        </div> --}}
         <div class="top-title">
             <img class="img-size" src="https://www.taiwan.net.tw/att/topTitleImg/21_0001001.svg" alt="">
             <h1>最新消息</h1>
@@ -53,8 +52,8 @@
     @foreach ($newsData as $news)
 
     <section class="lists-section">
-        <div class="functions">
-            <button class="kill" data-href="/news/delete/{{$news->id}}">
+        {{-- <div class="functions">
+            <button class="kill" data-herf="/news/delete/{{$news->id}}">
                 🗡 殺害
             </button>
 
@@ -69,7 +68,7 @@
                     🖍 編輯
                 </div>
             </a>
-        </div>
+        </div> --}}
         <div class="lists">
 
             <div class="img-left" style="background-image: url({{$news->img}})">
@@ -107,7 +106,7 @@
         btn.addEventListener('click',function() {
                 console.log(this);
             if (confirm('真的?')) {
-                location.href = this.getAttribute('data-href');
+                location.href = this.getAttribute('data-herf');
             }
             
         })

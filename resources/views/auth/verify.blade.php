@@ -1,3 +1,5 @@
+{{-- 這裡是驗證信箱頁 --}}
+
 @extends('layouts.app')
 
 @section('content')

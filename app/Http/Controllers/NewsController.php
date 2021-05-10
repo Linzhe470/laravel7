@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
+    public function list()
+    {
+
+        $newsData = News::get();
+        // dd($newsData[0]->title);
+        return view('news.news_list_unedit_page', compact('newsData'));
+
+
+        // $newsData = DB::table('news')->get();
+        // return view('news.news_list_page',compact('newsData'));
+    }
     public function newspage()
     {
 
@@ -83,8 +94,9 @@ class NewsController extends Controller
         //     'content' => $request->content,
         //     'view' => 0
         // ]);
-
-        return redirect('news');
+  
+        return redirect()->route('home');
+        // return route('news');
     }
 
 
@@ -94,7 +106,7 @@ class NewsController extends Controller
         // DB::table('news')
         // ->where('id',$id)
         // ->delete();
-        return redirect('news');
+        return redirect()->route('home');
     }
 
 
@@ -118,13 +130,15 @@ class NewsController extends Controller
     public function createpush()
     {
         News::create([
-            'title' => 'London to Paris',
+            'title' => '自然產生',
             'date' => '2020-05-05',
             'img' => 'https://www.taiwan.net.tw/pic.ashx?qp=/0040115/13_0040115.jpg&sizetype=2',
-            'content' => 'weinfwejfiwjeiofjwioejf',
+            'content' => '自然產生自然產生自然產生自然產生自然產生',
             'view' => 4
 
         ]);
+        return redirect()->route('home');
+        
         // DB::table('news')->insert([
 
         // 'title' => 'London to Paris',

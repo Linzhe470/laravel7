@@ -18,19 +18,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/contact_us','ContractUsController@store');
 
-Route::prefix('news')->group(function(){
+
+
+//CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS 
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::post('/contactus/store','ContactusController@store');
+
+
+
+
+
+
+
+
+
+
+//NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS 
+
+// 增刪查改
+
+
+
+
+// 前台畫面
+Route::get('news/list','NewsController@list');
+Route::prefix('news')->middleware('auth')->group(function(){
+
 
     // 產生畫面
     Route::get('/','NewsController@newspage');
     
     // 新增資料
-    Route::get('/create','NewsController@create');
+    Route::get('/create','NewsController@create')->name('docreate');
     // 儲存資料
     Route::post('/store','NewsController@store');// 儲存資料!!使用POST
     
@@ -42,7 +73,7 @@ Route::prefix('news')->group(function(){
     
     
     // 刪除資料
-    Route::get('/delete/{id}','NewsController@delete');
+    Route::get('/delete/{id}','NewsController@delete')->name('deletedata');
 
 });
 
@@ -51,15 +82,7 @@ Route::prefix('news')->group(function(){
 
 
 
-
-
-
-
-
-
-
-
-Route::get('news/createpush','NewsController@creatpush');
+Route::get('news/createpush','NewsController@createpush')->name('birthchild');
 Route::get('news/make/{title}/{view}','NewsController@make');
 
 
@@ -74,29 +97,9 @@ Route::get('news/detail','NewsController@detail');
 
 
 
-
-
 // Route::get('news/content', function () {
 //     return view('news/news_content_page');
 // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -165,11 +168,18 @@ Route::get('lesson1', function () {
     // else(){}
 
 
-
-
     return 'hellow world';
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// ->name('home');命名路由名稱
+// 跳轉時 以return redirect()->route('deletedata');方式執行該路由
+
+
+
+
+// 解決網址前綴問題
+// src="{{route('home')}}"也可執行
