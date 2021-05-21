@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
+    // 'default' => env('FILESYSTEM_DRIVER', 'myfile'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,11 +47,23 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+            // 找尋storage資料夾中的app資料夾(決對位置)/..../storage/app/
+        ],
+
+        'myfile' => [
+            'driver' => 'local',
+            'root' => public_path('upload'),
+            'url' => '/upload/',
+            'visibility' => 'public'
         ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            // 找尋storage資料夾中的app資料夾(決對位置)/..../storage/app/public
+            // php artisan storage:link
+            // 建立public/storage
+
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -80,5 +93,18 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
+    //  Storage:: 儲存函式
+    // Storage::disk('public') 儲存在public資料夾
+    // Storage::disk('myfile')->putFile('內資料夾','$file')$file儲存在myfile內資料夾中的資料夾
+    // $path=Storage::disk('public')->myfile('內資料夾','$file')
+    // putFile()產生亂數檔名
+    // $path=資料夾/檔名
+    // /upload/$path 才是正確位址
+
+    // 魔改'url' => '/upload/',
+    // Storage::disk('myfile')->url($path)
+    // 即將disk('myfile')放入url($path)連結
+    // 等同執行php artisan storage:link
+    // 執行檔案連結並建立
 
 ];

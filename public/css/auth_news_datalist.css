@@ -6,7 +6,6 @@ main{
 .functions button{
     width: 5rem;
     margin-bottom: 1rem;
-
     border: none;
 }
 .functions button a{
