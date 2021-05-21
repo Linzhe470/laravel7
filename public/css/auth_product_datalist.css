@@ -1,0 +1,26 @@
+main{
+    padding: 20%;
+}
+
+
+.functions button{
+    width: 5rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+.functions button a{
+    color: white;
+    text-decoration: none;
+}
+.functions button a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+table.dataTable tbody td {
+    vertical-align: middle;
+}
+table.dataTable tbody td:nth-of-type(7) {
+    text-align: right;
+
+}

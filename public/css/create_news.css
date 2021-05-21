@@ -13,6 +13,8 @@ input{
 }
 textarea{
     width: 50vw;
+    height: 100px;
+
 }
 .mx-auto{
     display: flex;
