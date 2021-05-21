@@ -52,23 +52,7 @@
     @foreach ($newsData as $news)
 
     <section class="lists-section">
-        {{-- <div class="functions">
-            <button class="kill" data-herf="/news/delete/{{$news->id}}">
-                🗡 殺害
-            </button>
 
-            <a href="/news/delete/{{$news->id}}" class="delete-btn">
-                <div class="delete">
-                    X 刪除
-                </div>
-            </a>
-
-            <a href="/news/edit/{{$news->id}}" class="edit-btn">
-                <div class="edit">
-                    🖍 編輯
-                </div>
-            </a>
-        </div> --}}
         <div class="lists">
 
             <div class="img-left" style="background-image: url({{$news->img}})">

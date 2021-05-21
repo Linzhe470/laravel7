@@ -29,7 +29,22 @@
             z-index: 9999999;
         }
         main{
-            margin-top: 3rem;
+            justify-content: unset !important;
+        }
+        .all{
+            background-color: white;
+            border: 1px solid rgb(199, 199, 199);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding:3rem 20px;
+        }
+        .here{
+            padding:3rem 20px; 
+        }
+        .content{
+            margin-top: 3rem !important;
         }
     </style>
     @yield('css')
@@ -54,17 +69,12 @@
                             <a class="nav-link" href="{{ url('/index') }}">數位方塊</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/news') }}">最新消息</a>
+                            <a class="nav-link" href="{{ route('frontlist') }}">最新消息</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"href="{{ url('/news') }}">編輯🖍</a>
                         </li>
                         @else
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/home') }}">家</a>
-                        </li>
-                        
                         <li class="nav-item dropdown">
 
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -76,12 +86,29 @@
                                 <a class="dropdown-item" href="news/list">最新消息</a>
                             </div>
                         </li>
+
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/home') }}">訊息</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/listss') }}">產品</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/realindex') }}">產品卡特</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/productype') }}">類別</a>
+                        </li>
+                        
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/news') }}">編輯🖍</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/news/create') }}">新增+</a>
-                        </li>
+                        </li> --}}
                        
                         @endguest
 
@@ -106,8 +133,14 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
+
+
+
+                                
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" 
+                                    href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -117,6 +150,10 @@
                                         @csrf
                                     </form>
                                 </div>
+
+
+
+
                             </li>
                         @endguest
                     </ul>

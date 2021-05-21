@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container here">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -67,7 +67,11 @@
             <td>{{$news->id}}</td>
             <td>{{$news->title}}</td>
             <td>{{$news->date}}</td>
-            <td><img src="{{$news->img}}" alt="" style="height:auto;width:90%"></td>
+            <td>
+            
+            <img src="{{$news->img}}" alt="" style="height:auto;width:100px">
+            
+            </td>
             <td>{{$news->content}}</td>
             {{-- <td>{{$news->view}}</td> --}}
             <td class="functions">

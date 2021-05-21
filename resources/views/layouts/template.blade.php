@@ -80,10 +80,10 @@
                         <a class="nav-link mr-2 text-center" href="{{ asset('news/list') }}">News<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-body ml-md-4 text-center" href="#">Portfolio</a>
+                        <a class="nav-link text-body ml-md-4 text-center" href="#">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-body mx-md-4 text-center" href="#">About</a>
+                        <a class="nav-link text-body mx-md-4 text-center" href="{{route('home')}}">Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-body ml-md-3 text-center" href="#">Contact</a>

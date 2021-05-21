@@ -8,10 +8,15 @@ Digipack-create
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/create_news.css') }}">
+<style>
+main{
+    justify-content:unset;
+}
+</style>
 @endsection
 
 @section('main')
-<h1>請開始你的編輯</h1>
+<h1 class="p-5" >請開始你的創建</h1>
 {{-- 首頁     /index --}}
 {{-- 新增頁面 /news/create --}}
 {{-- 儲存頁面 /news/store --}}
@@ -20,7 +25,7 @@ Digipack-create
 {{-- 刪除頁面 /news/delete(destory) --}}
 
 {{-- action 觸發路徑 --}}
-    <form action="/news/store" method="POST" class="mx-auto">
+    <form action="/news/store" method="POST" class="mx-auto" enctype="multipart/form-data">
         @csrf
         {{-- @csrf 阻擋攻擊 與POST必同時使用 --}}
 
@@ -37,7 +42,8 @@ Digipack-create
 
         <div class="form-group">
             <label for="">圖片</label>
-            <input type="text" id="img" name="img">
+            {{-- <input type="text" id="img" name="img"> --}}
+            <input type="file" accept="image/*" id="img" name="img">
         </div>
         
         <div class="form-group">

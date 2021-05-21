@@ -19,7 +19,7 @@ Digipack-create
 {{-- 刪除頁面 /news/delete(destory) --}}
 
 {{-- action 觸發路徑 --}}
-    <form action="/news/update/{{$newsData->id}}" method="POST" class="mx-auto">
+    <form action="/news/update/{{$newsData->id}}" method="POST" class="mx-auto" enctype="multipart/form-data">
         @csrf
         {{-- @csrf 阻擋攻擊 與POST必同時使用 --}}
 
@@ -36,7 +36,8 @@ Digipack-create
 
         <div class="form-group">
             <label for="">圖片</label>
-            <input type="text" id="img" name="img" value="{{$newsData->img}}">
+            <input type="file" accept="image/*" id="img" name="img" value="{{$newsData->img}}">
+
         </div>
         
         <div class="form-group">
