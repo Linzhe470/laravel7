@@ -3,10 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,45 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 //AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH AUTH
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-//CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS 
-
 Route::get('/index', function () {
     return view('index');
 });
 
+//CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS CONTACTUS 
 Route::post('/contactus/store','ContactusController@store');
-
-
-
-
-
-
-
-
-
 
 //NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS 
 
 // 增刪查改
 
 
-
-
 // 前台畫面
-Route::get('news/list','NewsController@list');
+Route::get('news/list','NewsController@list')->name('frontlist');
 Route::prefix('news')->middleware('auth')->group(function(){
-
-
     // 產生畫面
     Route::get('/','NewsController@newspage');
     
@@ -64,7 +43,6 @@ Route::prefix('news')->middleware('auth')->group(function(){
     Route::get('/create','NewsController@create')->name('docreate');
     // 儲存資料
     Route::post('/store','NewsController@store');// 儲存資料!!使用POST
-    
     
     // 修改資料
     Route::get('/edit/{id}','NewsController@edit'); // 取得該筆資料
@@ -74,13 +52,12 @@ Route::prefix('news')->middleware('auth')->group(function(){
     
     // 刪除資料
     Route::get('/delete/{id}','NewsController@delete')->name('deletedata');
-
+    // route('deletedata',['id'=>1])
+    // 需指定id變數 才可使用
 });
 
 
-
-
-
+Route::resource('fronts', 'FrontController');
 
 Route::get('news/createpush','NewsController@createpush')->name('birthchild');
 Route::get('news/make/{title}/{view}','NewsController@make');
@@ -88,19 +65,42 @@ Route::get('news/make/{title}/{view}','NewsController@make');
 
 // 指向ID
 Route::get('news/updatepush/{id}','NewsController@update');
-
-
 Route::get('news/detail/{id}','NewsController@innerdetail');
-
-
 Route::get('news/detail','NewsController@detail');
-
-
-
 // Route::get('news/content', function () {
 //     return view('news/news_content_page');
 // });
 
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+// ->name('home');命名路由名稱
+// 跳轉時 以return redirect()->route('deletedata');方式執行該路由
+
+// Route::resources([
+//     'photos' => 'PhotoController',
+//     'posts' => 'PostController',
+// ]);
+// Route::resource('news', 'NewsResourceController');
+
+
+// 刪除其他圖片👇
+Route::post('/product/deleteimg','ProductResourceController@deleteimg');
+
+
+Route::get('/realindex/{typeId?}','ProductResourceController@realindex');
+
+Route::resource('product', 'ProductResourceController');
+
+
+Route::get('/birth','ProductResourceController@birth')->name('pd_birth');
+Route::get('/listss','ProductResourceController@list')->name('listss');
+Route::resource('productype', 'ProductypeResourceController');
+Route::get('/birthtype','ProductypeResourceController@birth')->name('pdtp_birth');
+
+// 解決網址前綴問題
+// src="{{route('home')}}"也可執行
 
 
 Route::get('test', function () {
@@ -111,7 +111,6 @@ Route::get('test', function () {
     // 方法1
     // return view('test',['abc'=>$data]);
     // 可重新定義組成資料之變數
-
     // 方法2
     return view('test', compact('data', 'data2', 'data3', 'data4'));
 });
@@ -120,26 +119,16 @@ Route::get('test', function () {
 //     return $name;
 // });
 
-
 Route::get('lesson1', function () {
-    // $變數名稱
-    // = 指派運算子
-
-    // gettype ( mixed $value ) : string
-    // dd() 顯示出來結果
-
-    // 字串 string
-    // 整數 integer
-    // 浮點 double
-    // 布林 boolean
-    // 陣列 arry
+    // $變數名稱// = 指派運算子// gettype ( mixed $value ) : string
+    // dd() 顯示出來結果// 字串 string// 整數 integer// 
+    // 浮點 double// 布林 boolean// 陣列 arry
     // $data = 'abc';
     $arry1 = ['a' => 123, 'b' => 456, 'c' => true];
     // dd(gettype($data));
     $num1 = 1;
     $num2 = 2;
-    // 指派運算子 = += -=
-    // 算術運算子 + - * / ** %
+    // 指派運算子 = += -=// 算術運算子 + - * / ** %
     // 字串運算子 . //為字串相加用(非+)
     // 比較運算子 > < >= <= == != <>
     // 邏輯運算子 && || ! and or xor
@@ -149,7 +138,6 @@ Route::get('lesson1', function () {
     //           1 0 1
     //           1 1 0
     // OR 或 AND及 NOT反 X斥
-
     dd(
         $num1 . $num2,
         $num1 + $num2,
@@ -162,24 +150,9 @@ Route::get('lesson1', function () {
     );
 
     // $arry1['a'] 取得arry1中a的值
-
     // if(){}
     // elseif(){}
     // else(){}
-
-
     return 'hellow world';
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-// ->name('home');命名路由名稱
-// 跳轉時 以return redirect()->route('deletedata');方式執行該路由
-
-
-
-
-// 解決網址前綴問題
-// src="{{route('home')}}"也可執行
