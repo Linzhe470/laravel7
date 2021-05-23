@@ -23,18 +23,21 @@
     }
     .typebtn:hover{
       background-color: rgb(223, 223, 223);
+      text-decoration: none;
     }
+    a:hover{
+      color: #000;
+    }
+
 </style>
 @endsection
 
 @section('content')
-<div class="container content">
+<div class="p-0 my-5">
 
 </div>
 @endsection
 @section('main')
-<hr>
-
 
 <div class="text-gray-600 font-body">
     <div class="grid md:grid-cols-2 lg:grid-cols-3">
@@ -162,14 +165,14 @@
           </div> --}}
           <header>
             <h2 class="text-gray-700 text-6xl font-semibold">FANCY CLOTHES</h2>
-            <h3 class="text-2xl font-semibold">Make Your Style</h3>
+            {{-- <h3 class="text-2xl font-semibold">Make Your Style</h3> --}}
           </header>
           <div class="">
-            <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">
+            <h4 class="font-bold mt-3 pb-2 border-b border-gray-200">
               Latest Collections
             </h4>
             <div class="typebtns d-flex ">
-              <div class="typebtn d-flex  ">all</div>
+              <a class="typebtn d-flex  " href="/realindex" >all</a>
 
               @foreach ($productTypes as $type)
             
@@ -177,13 +180,8 @@
   
               @endforeach
             </div>
-
-
-
-
-            
                 
-            <div class="mt-8 grid lg:grid-cols-4  gap-10">
+            <div class="mt-3 grid lg:grid-cols-4  gap-10 px-5">
                 @foreach ($productData as $item)
                     <div class="card hover:shadow-lg">
 
