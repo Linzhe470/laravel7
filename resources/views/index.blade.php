@@ -465,24 +465,24 @@ Digipack-index
             class="position-relative"></iframe>
         <div class="col-10 col-md-3 px-5 bg-light position-absolute py-4 shadow-sm p-3 mb-5 bg-white rounded border"
             id="form-box">
-            <span class="h5">聯絡我們</span>
-            <p class="pt-2">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
+            <span class="h5" id="g-recaptcha">聯絡我們</span>
+            {{-- <p class="pt-2">Post-ironic portland shabby chic echo park, banjo fashion axe</p> --}}
 
 
-            <form action="/contactus/store" method="POST" class="mx-auto">
+            <form action="/contactus/store" method="POST" class="mx-auto" >
                 @csrf
 
                 <div class="form-group">
                     <label for="">姓名</label>
                     <input type="text" name="name" 
-                    class="form-control"  >
+                    class="form-control" value="{{old('name')}}" >
                     {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                 </div>
 
                 <div class="form-group">
                     <label for="">信箱</label>
                     <input type="email"  name="email" 
-                    class="form-control" aria-describedby="emailHelp">
+                    class="form-control" aria-describedby="emailHelp" value="{{old('email')}}">
                 </div>
 
                 <div class="form-group">
@@ -494,19 +494,27 @@ Digipack-index
                 <div class="form-group">
                     <label for="">主旨</label>
                     <input type="text" name="title" 
-                    class="form-control" >
+                    class="form-control" value="{{old('title')}}" >
                 </div>
                 <div class="form-group">
                     <label for="">內文</label>
                     <input type="text" name="message" 
-                    class="form-control"  style="height: 128px;">
+                    class="form-control"  style="height: 128px;" value="{{old('message')}}">
                 </div>
+                <div class="form-group" >
 
+                 {!! htmlFormSnippet() !!}
+                 @error('g-recaptcha-response')
+                     <strong style="background-color: red;color:white;">你是機器人?👆罰你重填</strong>
+                 @enderror
+
+                </div>
+                 <br>
                 <button type="submit" class="btn btn-primary mb-3" style="width: 100%;">Button</button>
                 <div style="font-size: 12px;">Chicharrones blog helvetica normcore iceland tousled brook viral
                     artisan.</div>
             </form>
-
+ 
 
         </div>
     </section>

@@ -1,5 +1,5 @@
 {{-- 繼承哪一個模板 --}}
-@extends('layouts.app')
+@extends('layouts.create')
 
 
 @section('name')
@@ -7,109 +7,57 @@ Digipack-create
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="/css/create_news.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<link rel="stylesheet" href="{{ asset('/css/create_product.css') }}">
 <style>
-.img-l{
-    width:360px;
-    height:200px;
-    background-position: center;
-    background-size: cover;
-}
-.list-imgs{
-    width:100px;
-    height:100px;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
 
-.del-img-btn{
-    background-color: red;
-    color: white;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%,-50%);
-    cursor: pointer;
-    transition:all,.4s
-}
-.del-img-btn:hover{
-    background-color: rgb(197, 4, 4);
-    border-radius: 50%;
-}
-
-.img-sb{
-    display: flex;
-}
-
-.inputwidth{
-    width: 50vw;
-    height: 40px;
-}
-.fake-hr{
-    align-self: center;
-    width: 100%;
-    height: 1px;
-    background-color: rgb(236, 236, 236);
-    margin-bottom: 2rem;
-}
-.docrate{
-    position: relative;
-    margin-left: 10px;
-    line-height: 10px;
-    font-weight: 550;
-}
-.docrate::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 25%;
-    width: 10px;
-    height: 50%;
-    background-color: salmon
-
-}
 </style> 
 @endsection
 
 @section('main')
-<div class="all">
-<h4 class="p-3 docrate">請開始你的產品編輯</h4>
+
+<h1 class="main-title p-3" >請開始你的產品編輯</h1>
 <div class="fake-hr"></div>
 
-    <form action="/product/{{$productData->id}}" method="POST" class="mx-auto" enctype="multipart/form-data">
-        @csrf
-        @method('PATCH')
 
-        <div class="form-group">
+<form action="/product/{{$productData->id}}" method="POST" class="mx-auto" enctype="multipart/form-data">
+  @csrf
+  @method('PATCH')
+      
+        <div class="all">
+
+          <div class="form-group">
             <label for="">名稱</label>
             <input type="text" id="name" name="name" value="{{$productData->name}}">
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label for="">價格</label>
             <input type="text" id="price" name="price" value="{{$productData->price}}">
-        </div>
+          </div>
 
-        <div class="form-group">
+
+
+          
+          <div class="form-group">
             <label for="">類型</label>
-            <select class="inputwidth" name="type_id" id="type_id">
+            <select name="type_id" id="type_id">
                 @foreach ($productTypes as $types)
-                {{--  @if (判斷式) selected @endif  --}}
                 <option value="{{$types->id}}" @if ($types->id == $productData->type_id) selected @endif>{{$types->name}}</option>
                 @endforeach
             </select>
+
+            {{-- <input type="text" id="type_id" name="type_id" required> --}}
         </div>
 
-        <div class="fake-hr"></div>
-        
-        <div class="form-group">
+
+          <div class="fake-hr"></div>
+            
+          <div class="form-group">
             <label for="">主圖</label>
             <div class="img-mj">
                 <div class="img-l mb-3" style="background-image: url({{$productData->img}});">
@@ -137,17 +85,23 @@ Digipack-create
         </div>
 
         <div class="fake-hr"></div>
-
         <div class="form-group">
-            <label for="">描述</label>
-            <textarea name="description" id="" cols="30" rows="10">{{$productData->description}}</textarea>
-        </div>
-        
-        <div class="fake-hr"></div>
+          <label for="">描述</label>
+          <textarea id="summernote" name="description"  cols="30" rows="10" required>{!! $productData->description !!}</textarea>
+      </div>
+      
+      <div class="fake-hr"></div>
 
-        <button type="submit">提交</button>
-    </form>
-</div>
+      <button type="submit" class="submit-btn-purple">提交</button>
+  </form>
+
+
+  <script>
+    $('#summernote').summernote({
+      placeholder: 'Hello stand alone ui',
+      height: 200,
+    });
+  </script>
  
 @endsection
 
@@ -185,6 +139,7 @@ Digipack-create
             }
         }) 
     });
+    
     // btn.forEach(function (btn) {
     //     btn.addEventListener('click',function () {
     //         // CLICK

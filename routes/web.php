@@ -84,6 +84,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ]);
 // Route::resource('news', 'NewsResourceController');
 
+//購物車 👇
+Route::prefix('shopping_cart')->group(function(){
+
+    // 新增
+    Route::post('/add','ShoppingCartController@add');
+    // DD檢視
+    Route::get('/content','ShoppingCartController@content');
+    // 看看購物車
+    Route::get('/list','ShoppingCartController@list');
+    // 看看購物車
+    Route::post('/update','ShoppingCartController@update');
+
+});
+
+
+
+
+// 晴天筆記_新增圖片👇
+
+Route::post('summernote/store','ToolBoxController@summernoteStore');
+    
+
 
 // 刪除其他圖片👇
 Route::post('/product/deleteimg','ProductResourceController@deleteimg');

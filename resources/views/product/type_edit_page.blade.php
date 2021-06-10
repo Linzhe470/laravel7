@@ -30,5 +30,6 @@ Digipack-create
 
         <button type="submit">提交</button>
     </form>
- 
+
 @endsection
+

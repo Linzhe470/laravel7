@@ -169,6 +169,13 @@ return [
         /*
          * Application Service Providers...
          */
+        # 我不是機器人:laravel-recaptcha 5.0.x
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+
+        # 購物車:laravelshoppingcart
+        Darryldecode\Cart\CartServiceProvider::class,
+        
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -226,6 +233,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        # laravel-recaptcha 5.0.x google驗證
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+
+        # 購物車:laravelshoppingcart
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        
 
     ],
 

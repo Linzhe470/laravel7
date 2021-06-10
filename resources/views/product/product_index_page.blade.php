@@ -1,47 +1,61 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/css/front_product_index.css') }}" />
-<style>
-    .typebtns{
-      justify-content: flex-start;
-      align-items: center;
-      padding: 1rem 0;
-    }
-    .typebtn{
-      background-color: lightgray;
-      color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-      margin: 0 10px;
-      width: 100px;
-      cursor: pointer;
-      border-radius: 20px ;
-      font-weight: 700;
-    }
-    .typebtn:hover{
-      background-color: rgb(223, 223, 223);
-      text-decoration: none;
-    }
-    a:hover{
-      color: #000;
-    }
+    <link rel="stylesheet" href="{{ asset('/css/front_product_index.css') }}" />
 
-</style>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js"
+        integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css"
+        integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+    <style>
+        .typebtns {
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .typebtn {
+            background-color: lightgray;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            margin: 0 10px;
+            width: 100px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .typebtn:hover {
+            background-color: rgb(223, 223, 223);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        .text-6xl {
+            font-size: 2rem !important;
+        }
+
+    </style>
 @endsection
 
 @section('content')
-<div class="p-0 my-5">
+    <div class="p-0 my-5">
 
-</div>
+    </div>
 @endsection
 @section('main')
 
-<div class="text-gray-600 font-body">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3">
-        {{-- <div class="md:col-span-1 md:flex md:justify-end">
+    <div class="text-gray-600 font-body">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3">
+            {{-- <div class="md:col-span-1 md:flex md:justify-end">
           <nav class="text-right">
             <div class="flex justify-between items-center">
               <h1 class="font-bold uppercase p-4 border-b border-gray-100">
@@ -127,10 +141,8 @@
             </ul>
           </nav>
         </div> --}}
-        <main
-          class="bg-white px-16 py-6 md:col-span-2 lg:col-span-3 min-h-screen"
-        >
-          {{-- <div class="flex justify-center md:justify-end">
+            <main class="bg-white px-16 py-6 md:col-span-2 lg:col-span-3 min-h-screen">
+                {{-- <div class="flex justify-center md:justify-end">
             <a
               href="#"
               class="
@@ -163,78 +175,77 @@
               >Sign up</a
             >
           </div> --}}
-          <header>
-            <h2 class="text-gray-700 text-6xl font-semibold">FANCY CLOTHES</h2>
-            {{-- <h3 class="text-2xl font-semibold">Make Your Style</h3> --}}
-          </header>
-          <div class="">
-            <h4 class="font-bold mt-3 pb-2 border-b border-gray-200">
-              Latest Collections
-            </h4>
-            <div class="typebtns d-flex ">
-              <a class="typebtn d-flex  " href="/realindex" >all</a>
+                <header>
+                    <h2 class="text-gray-700 text-6xl font-semibold">FANCY CLOTHES</h2>
+                    {{-- <h3 class="text-2xl font-semibold">Make Your Style</h3> --}}
+                </header>
+                <div class="">
+                    <h4 class="font-bold mt-3 pb-2 border-b border-gray-200">
+                        Latest Collections
+                    </h4>
+                    <div class="typebtns d-flex ">
+                        <a class="typebtn d-flex  " href="/realindex">all</a>
 
-              @foreach ($productTypes as $type)
-            
-              <a class="typebtn d-flex " href="/realindex?typeId={{$type->id}}">{{$type->name}}</a>
-  
-              @endforeach
-            </div>
-                
-            <div class="mt-3 grid lg:grid-cols-4  gap-10 px-5">
-                @foreach ($productData as $item)
-                    <div class="card hover:shadow-lg">
+                        @foreach ($productTypes as $type)
 
-                        <img
-                        src="{{$item->img}}"
-                        alt="stew"
-                        class="w-full object-cover"
-                        height="500px"
-                        />
+                            <a class="typebtn d-flex " href="/realindex?typeId={{ $type->id }}">{{ $type->name }}</a>
 
-                        <div class="m-4">
-                            <span class="font-bold">{{$item->name}}</span>
-                            <span class="block text-gray-500 text-sm">${{$item->price}}</span>
+                        @endforeach
+                    </div>
+
+                    <div class="mt-3 grid lg:grid-cols-4  gap-10 px-5">
+                        @foreach ($productData as $item)
+                            <div class="card hover:shadow-lg">
+
+                                <img src="{{ $item->img }}" alt="stew" class="w-full object-cover" height="500px" />
+
+                                <div class="m-4">
+                                    <span class="font-bold">{{ $item->name }}</span>
+                                    <span class="d-flex justify-content-between">
+
+                                        <span class="block text-gray-500 text-sm">${{ $item->price }}</span>
+                                        <button class="add-btn typebtn d-flex  "
+                                            data-id="{{ $item->id }}">加入購物車</button>
+                                    </span>
+
+                                </div>
+
+                                <div class="badge">
+                                    <span>{{ $item->gotProductType->name }}</span>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+
+
+                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">
+                        Most Popular
+                    </h4>
+                    <div class="mt-8">
+                        <!-- cards -->
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="
+                              btn
+                              bg-secondary-100
+                              text-secondary-200
+                              hover:shadow-inner
+                              transform
+                              hover:scale-125
+                              hover:bg-opacity-50
+                              transition
+                              ease-out
+                              duration-300
+                            ">
+                            Load more
                         </div>
-
-                        <div class="badge">
-                            <span>{{$item->gotProductType->name}}</span>
-                        </div>
-                    
+                    </div>
                 </div>
-                @endforeach
-                
-            </div>
-
-            
-            <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">
-              Most Popular
-            </h4>
-            <div class="mt-8">
-              <!-- cards -->
-            </div>
-            <div class="flex justify-center">
-              <div
-                class="
-                  btn
-                  bg-secondary-100
-                  text-secondary-200
-                  hover:shadow-inner
-                  transform
-                  hover:scale-125
-                  hover:bg-opacity-50
-                  transition
-                  ease-out
-                  duration-300
-                "
-              >
-                Load more
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-  </div>
+            </main>
+        </div>
+    </div>
 
 
 
@@ -243,19 +254,57 @@
 @endsection
 
 @section('js')
-  <!--引用jQuery-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <!--引用dataTables.js-->
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-   
- 
-    <script>
-    const burger = document.getElementById("burger");
-    const menu = document.getElementById("menu");
+    <!--引用jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!--引用dataTables.js-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    burger.addEventListener("click", () => menu.classList.toggle("hidden"));
+
+    <script>
+        const burger = document.getElementById("burger");
+        const menu = document.getElementById("menu");
+
+        burger.addEventListener("click", () => menu.classList.toggle("hidden"));
+
     </script>
 
+    {{-- 加入購物車 --}}
+    <script>
+        document.querySelectorAll('.add-btn').forEach(function(addBtn) {
+            addBtn.addEventListener('click', function() {
+                var productId = this.getAttribute('data-id');
+                var formData = new FormData();
+                console.log(productId);
+
+                formData.append('_token', '{{ csrf_token() }}');
+                formData.append('productId', productId);
+
+
+                fetch('/shopping_cart/add', {
+                    method: 'POST',
+                    body: formData
+                }).then(function(response) {
+                    return response.text();
+
+                }).then(function(data) {
+                    console.log(data);
+                    if (data == 'success')
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: '已加入購物車',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                })
+
+            });
+
+        });
+
+    </script>
+
+
+
+
 @endsection
-
-

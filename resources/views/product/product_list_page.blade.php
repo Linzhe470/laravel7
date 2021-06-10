@@ -93,7 +93,11 @@
                 @endforeach 
 
             </td>
-            <td>{{$item->description}}</td>
+            {{-- 
+                {!! !!} 表示innerHtml {{}} 表示innerText 
+
+            --}}
+            <td>{!! $item->description !!}</td>
             <td>{{$item->price}}</td>
             {{-- <td>{{$item->view}}</td> --}}
             <td class="functions">
@@ -136,6 +140,7 @@
 @endsection
 
 @section('js')
+
   <!--引用jQuery-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <!--引用dataTables.js-->
@@ -170,6 +175,8 @@
     })
 
 </script>
+
+
 
 @endsection
 

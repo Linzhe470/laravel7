@@ -5,48 +5,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     {{-- <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        .navbar{
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            z-index: 9999999;
-        }
-        main{
-            justify-content: unset !important;
-        }
-        .all{
-            background-color: white;
-            border: 1px solid rgb(199, 199, 199);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding:3rem 20px;
-        }
-        .here{
-            padding:3rem 20px; 
-        }
-        .content{
-            margin-top: 3rem !important;
-        }
-    </style>
+
     @yield('css')
 </head>
 <body>
@@ -94,21 +64,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/listss') }}">產品</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/realindex') }}">產品卡特</a>
-                        </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/productype') }}">類別</a>
                         </li>
                         
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/news') }}">編輯🖍</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/news/create') }}">新增+</a>
-                        </li> --}}
+                            <a class="nav-link" href="{{ url('/realindex') }}">產品卡特</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/shopping_cart/content') }}">購買檢視</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/shopping_cart/list') }}">購買購物車</a>
+                        </li>
                        
                         @endguest
 
@@ -133,11 +104,6 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-
-
-
-                                
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" 
                                     href="{{ route('logout') }}" 
@@ -150,7 +116,6 @@
                                         @csrf
                                     </form>
                                 </div>
-
 
 
 
