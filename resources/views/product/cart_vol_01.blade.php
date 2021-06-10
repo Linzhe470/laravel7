@@ -178,17 +178,17 @@
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">小計:</div>
-                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">24.80</div>
+                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">運費:</div>
-                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.80</div>
+                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">總計:</div>
-                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.90</div>
+                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
 
                     <div class="fake-hr"></div>
@@ -218,45 +218,6 @@
 
 
     <script>
-
-        cartCalc()
-
-        function cartCalc() {
-            var totalQty = 0;
-            var subPrice = 0;
-            var shipmentPrice = 6000;
-            var totalPrice = 0;
-            var qtyInputs = document.querySelectorAll('.qty-input');
-
-            qtyInputs.forEach(function(qtyInput) {
-
-                // 統計數量
-
-                totalQty += Number(qtyInput.value);
-                console.log(totalQty);
-
-                // 統計毛價格
-
-                var price = qtyInput.parentElement.nextElementSibling.getAttribute('data-price');
-                subPrice += price * qtyInput.value;
-
-            });
-
-            document.querySelector('#total-qty').innerText = totalQty.toLocaleString();
-            document.querySelector('#sub-price').innerText = subPrice.toLocaleString();
-
-            //  計算運費
-            if (subPrice >= 15000) {
-                shipmentPrice = 0;
-            }
-            document.querySelector('#shipment-price').innerText = shipmentPrice.toLocaleString();
-
-            //  統計總額
-            totalPrice = subPrice + shipmentPrice;
-
-            document.querySelector('#total-price').innerText = totalPrice.toLocaleString();
-        }
-        
         // .parentElement
 
         //  加加 減減 動動
@@ -285,7 +246,7 @@
                 price.innerText = newPrice;
 
                 // calcPrice(this);
-                // cartCalc()
+                cartCalc()
 
             });
         });
@@ -341,7 +302,7 @@
                 price.innerText = newPrice;
 
                 // calcPrice(this);
-                // cartCalc()
+                cartCalc()
             });
         });
 
@@ -364,7 +325,7 @@
                 price.innerText = newPrice;
 
                 // calcPrice(this);
-                // cartCalc()
+                cartCalc()
 
             })
 
@@ -372,7 +333,43 @@
 
         //  統計顯示
 
-       
+        cartCalc()
+
+        function cartCalc() {
+            var totalQty = 0;
+            var subPrice = 0;
+            var shipmentPrice = 6000;
+            var totalPrice = 0;
+            var qtyInputs = document.querySelectorAll('.qty-input');
+
+            qtyInputs.forEach(function(qtyInput) {
+
+                // 統計數量
+
+                totalQty += Number(qtyInput.value);
+                console.log(totalQty);
+
+                // 統計毛價格
+
+                var price = qtyInput.parentElement.nextElementSibling.getAttribute('data-price');
+                subPrice += price * qtyInput.value;
+
+            });
+
+            document.querySelector('#total-qty').innerText = totalQty.toLocaleString();
+            document.querySelector('#sub-price').innerText = subPrice.toLocaleString();
+
+            //  計算運費
+            if (subPrice >= 15000) {
+                shipmentPrice = 0;
+            }
+            document.querySelector('#shipment-price').innerText = shipmentPrice.toLocaleString();
+
+            //  統計總額
+            totalPrice = subPrice + shipmentPrice;
+
+            document.querySelector('#total-price').innerText = totalPrice.toLocaleString();
+        }
 
 
         // 將重複動作包覆成function
