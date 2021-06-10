@@ -129,7 +129,6 @@
                     <div class="row d-flex justify-content-between align-items-center">
 
                         <div class="col-8 d-flex align-items-start">
-                            <button class="del-btn btn-danger m-3" data-id="{{ $item->id }}">X</button>
                             <div class="card-img-top mr-3 " style="background-image:url('{{ $item->attributes->img }}')">
                             </div>
 
@@ -178,17 +177,17 @@
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">小計:</div>
-                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
+                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">24.80</div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">運費:</div>
-                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
+                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.80</div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">總計:</div>
-                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
+                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.90</div>
                     </div>
 
                     <div class="fake-hr"></div>
@@ -252,7 +251,7 @@
         });
 
 
-        // 更新的方宣
+        // 更新方宣
         function updateData(input, qty) {
             // var qty = 1;
             var productId = input.getAttribute('data-id');
@@ -265,16 +264,16 @@
 
 
             fetch('/shopping_cart/update', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(function(response) {
-                    return response.text();
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                return response.text();
 
-                }).then(function(data) {
-                    console.log(data);
-                    input.value = data;
-                })
+            }).then(function(data) {
+                console.log(data);
+                input.value = data;
+            })
 
         }
 
@@ -331,7 +330,7 @@
 
         })
 
-        //  統計顯示
+        //  下顯示
 
         cartCalc()
 
@@ -370,53 +369,15 @@
 
             document.querySelector('#total-price').innerText = totalPrice.toLocaleString();
         }
-
-
         // 將重複動作包覆成function
         // this = element;
 
+        function calcPrice(element) {
+            var price = element.parentElement.nextElementSibling;
+            var newPrice = (price.getAttribute('data-price') * input.value).toLocaleString();
+            console.log(price);
+            price.innerText = newPrice;
 
-        // 刪除該筆資料
-
-        // function productRemove(element) {
-
-        //     var delBtns = document.querySelectorAll('del-btn');
-
-
-        //     delBtns.forEach(function(delBtn) {
-
-        //             delBtn.addEventListener('click', function() {
-        //                 var formData = new FormData();
-
-        //                 formData.append('_token', '{{ csrf_token() }}');
-        //                 formData.append('productId', this.getAttribute('data-id'));
-        //                 delBtnElement = this;
-
-
-        //                 fetch('/shopping_cart/delete', {
-        //                         method: 'POST',
-        //                         body: formData
-        //                     })
-        //                     .then(function(response) {
-        //                         return response.text();
-
-        //                     }).then(function(data) {
-        //                         console.log(data);
-        //                         if (data == 'success') {
-        //                             var productArea = delBtnElement.parentElement.parentElement;
-        //                             productArea.remove();
-        //                             productArea.nextElementSibling.remove();
-
-        //                         };
-
-        //                     })
-
-        //             });
-
-
-
-        //         )
-        //     }
         }
 
     </script>

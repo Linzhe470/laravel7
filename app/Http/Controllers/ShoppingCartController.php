@@ -65,34 +65,4 @@ class ShoppingCartController extends Controller
         return $number;
     }
 
-    // 更新購物車
-    
-    // public function delete(Request $request)
-    // {
-    //     // 
-    //     $targetProduct = \Cart::get($request->productId);
-    //     \Cart::get($request->productId)->clear();
-    //     // dd($request->productId,$request->qty);
-    //     return $targetProduct;
-    // }
-    
-    // 購物車付款方式
-
-    // public function payment(Request $request)
-    // {
-    //     // 
-    //     if(\Cart::isEmpty())
-    //     {
-    //         return redirect('/realindex')
-    //         ->with('title','吱吱喳喳')
-    //         ->with('message','嘻嘻哈哈');
-    //     }else{
-
-    //         return redirect('/');
-    //     }
-        
-    // }
-
-
-
 }
