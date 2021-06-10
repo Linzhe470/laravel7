@@ -45,8 +45,8 @@ class ShoppingCartController extends Controller
     // 顯示購物車
     public function list()
     {
-        // view the cart items
-        $cartCollection = \Cart::getContent();
+        // view the cart items q9 排序方式 ->sortBy(
+        $cartCollection = \Cart::getContent()->sortBy('id');
         return view('product/cart_vol_01',compact('cartCollection'));
     
     }
@@ -63,6 +63,23 @@ class ShoppingCartController extends Controller
         $number = \Cart::get($request->productId)->quantity;
         // dd($request->productId,$request->qty);
         return $number;
+    }
+
+    public function payment()
+    {
+        // 清空 跳轉警示
+        // \Cart::clear();
+        // 可以包成方炫使用/存入陣列中
+        if(\Cart::isEmpty()){
+
+            return redirect('/realindex')->with('message','購物車空空!請先加入商品再繼續結帳~');
+        }else{
+            
+            $cartCollection = \Cart::getContent();
+            return view('product/cart_vol_02',compact('cartCollection'));
+        }
+            
+
     }
 
 }

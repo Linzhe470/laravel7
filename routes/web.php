@@ -93,8 +93,10 @@ Route::prefix('shopping_cart')->group(function(){
     Route::get('/content','ShoppingCartController@content');
     // 看看購物車
     Route::get('/list','ShoppingCartController@list');
-    // 看看購物車
+    // 更新購物車
     Route::post('/update','ShoppingCartController@update');
+    // 貨款資訊
+    Route::get('/payment','ShoppingCartController@payment');
 
 });
 

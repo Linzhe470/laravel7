@@ -6,7 +6,6 @@
 
 @section('css')
 
-    <link rel="icon" href="./img/svg-export/p-logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -76,9 +75,15 @@
                 </div>
 
 
+                <div class="fake-hr"></div>
 
-                <div style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width:94%;">
-                </div>
+                {{-- 之後要放進去 --}}
+                <section>
+                    <form action="" method="POST">
+                        @csrf
+                    </form>
+
+                </section>
 
                 <div class="row pl-5 pr-5 pt-3" style="width: 100%;">
                     <div class="row d-flex justify-content-center align-items-start flex-column" style="width: 100%;">
@@ -89,48 +94,36 @@
                 </div>
 
                 <div class="container p-0 pt-3 pl-5 pr-5">
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-12 d-flex align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    信用卡付款
-                                </label>
-                            </div>
-                        </div>
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width:96%;">
-                        </div>
-                    </div>
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-12 d-flex align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                    value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                    <div class="row d-flex justify-content-start pl-5 align-items-center">
 
-                                    網路 ATM
-                                </label>
-                            </div>
-                        </div>
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width:96%;">
-                        </div>
+                        <label class="form-check-label" for="payment">
+                            <input class="form-check-input" type="radio" name="payment" value="visa" @if ($payment == "visa")
+                                
+                            @endif  required>
+                            信用卡付款
+                        </label>
+
+                        <div class="fake-hr"></div>
                     </div>
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-12 d-flex align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                                    value="option2" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    超商代碼
-                                </label>
-                            </div>
-                        </div>
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 40px;width:100%;">
-                        </div>
+                    <div class="row d-flex justify-content-start pl-5 align-items-center">
+
+                        <label class="form-check-label" for="payment">
+                            <input class="form-check-input" type="radio" name="payment" value="atm" @if ($payment == "atm")
+                                
+                            @endif required>
+                            網路 ATM
+                        </label>
+
+                        <div class="fake-hr"></div>
+                    </div>
+                    <div class="row d-flex justify-content-start pl-5 align-items-center">
+                        <label class="form-check-label" for="payment">
+                            <input class="form-check-input" type="radio" name="payment" value="cvs" @if ($payment == "cvs")
+                                
+                            @endif required>
+                            超商代碼
+                        </label>
+                        <div class="fake-hr"></div>
                     </div>
 
                 </div>
@@ -142,34 +135,29 @@
                 </div>
 
                 <div class="container p-0 pt-3 pl-5 pr-5">
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-12 d-flex align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios3"
-                                    value="option3" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                    <div class="row d-flex justify-content-start pl-5 align-items-center">
+                   
+                                <label class="form-check-label" for="shipment">
+                                    <input class="form-check-input" type="radio" name="shipment" value="home" @if ($shipment == "home")
+                                        
+                                    @endif required>
                                     黑貓宅配
                                 </label>
-                            </div>
-                        </div>
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width:96%;">
-                        </div>
+    
+                        <div class="fake-hr"></div>
                     </div>
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-12 d-flex align-items-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios4"
-                                    value="option4" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                    <div class="row d-flex justify-content-start pl-5 align-items-center">
+                   
+                                <label class="form-check-label" for="shipment">
+                                    <input class="form-check-input" type="radio" name="shipment" value="store" @if ($shipment == "store")
+                                        
+                                    @endif required>
                                     超商店到店
                                 </label>
-                            </div>
-                        </div>
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width:96%;">
-                        </div>
+    
+                        <div class="fake-hr"></div>
                     </div>
+                    
 
                 </div>
                 <div class="container p-0 pt-3 pl-5 pr-5">
@@ -178,34 +166,46 @@
                         <div class="row p-0">
                             <div class="col-xl-9 col-lg-8 col-5"></div>
                             <div class="col-xl-1 col-lg-2 col-3">數量:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">3</div>
+                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">{{ \Cart::getTotalQuantity() }}</div>
                         </div>
+
+                        @php
+                            $subTotal = \Cart::getSubTotal();
+                            $shipment = \Cart::getSubTotal() > 15000 ? 0 : 6000;
+                            
+                        @endphp
+
                         <div class="row p-0">
                             <div class="col-xl-9 col-lg-8 col-5"></div>
                             <div class="col-xl-1 col-lg-2 col-3">小計:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.80</div>
+                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
+                                {{ number_format($subTotal) }}
+                            </div>
                         </div>
+
+
                         <div class="row p-0">
                             <div class="col-xl-9 col-lg-8 col-5"></div>
                             <div class="col-xl-1 col-lg-2 col-3">運費:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.80</div>
+                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
+                                {{ $shipment }}</div>
                         </div>
                         <div class="row p-0">
                             <div class="col-xl-9 col-lg-8 col-5"></div>
                             <div class="col-xl-1 col-lg-2 col-3">總計:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.90</div>
+                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
+                                {{ number_format($subTotal + $shipment) }}
+                            </div>
                         </div>
 
-                        <div
-                            style="border-top: 1px solid rgb(230, 230, 230);margin-top: 20px;margin-bottom: 20px;width: 100%;">
-                        </div>
+                        <div class="fake-hr"></div>
                     </div>
 
 
                     <div class="container p-0 pt-3 pl-5 pr-5">
 
                         <div class="container d-flex justify-content-between" style="padding: 0;">
-                            <a href="./cart.vol.01.html"><button type="button" class="btn btn-primary btn-lg pbr-color"
+                            <a href="/shopping_cart/list"><button type="button" class="btn btn-primary btn-lg pbr-color"
                                     style="padding: 6px 30px;">Back</button></a>
                             <a href="./cart.vol.03.html"><button type="button" class="btn btn-primary btn-lg pb-color"
                                     style="padding: 6px 30px;">Next</button></a>
@@ -221,13 +221,5 @@
 
     @endsection
     @section('js')
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
-        </script>
+
     @endsection

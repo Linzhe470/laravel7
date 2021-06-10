@@ -39,15 +39,6 @@
             text-align: right;
         }
 
-        .fake-hr {
-
-            border-top: 1px solid rgb(230, 230, 230);
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 100%;
-
-        }
-
     </style>
 
 
@@ -177,17 +168,17 @@
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">小計:</div>
-                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">24.80</div>
+                        <div id="sub-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">運費:</div>
-                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.80</div>
+                        <div id="shipment-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
                     <div class="row p-0">
                         <div class="col-xl-9 col-lg-8 col-5"></div>
                         <div class="col-xl-1 col-lg-2 col-3">總計:</div>
-                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0">$24.90</div>
+                        <div id="total-price" class="col-xl-2 col-lg-2 col-4 text-right p-0"></div>
                     </div>
 
                     <div class="fake-hr"></div>
@@ -196,12 +187,12 @@
 
                 <div class="container d-flex justify-content-between" style="padding: 25px;">
 
-                    <a href="./boostrap-homepage.html" class="btn p-color">
+                    <a href="/realindex" class="btn p-color">
                         <i class="fal fa-arrow-left"></i>
                         Homepage
                     </a>
 
-                    <a href="./cart.vol.02.html">
+                    <a href="/shopping_cart/payment">
                         <button type="button" class="btn btn-primary btn-lg pb-color"
                             style="padding: 6px 30px;">Next</button>
                     </a>
@@ -220,11 +211,37 @@
         // .parentElement
 
         //  加加 減減 動動
+        window.addEventListener('load', function makeLocale() {
+
+            var qtyInputs = document.querySelectorAll('.qty-input');
+            console.log(qtyInputs);
+            qtyInputs.forEach(function(qtyInput) {
+
+                var price = qtyInput.parentElement.nextElementSibling;
+                var newPrice = (price.getAttribute('data-price') * qtyInput.value).toLocaleString();
+                console.log(price);
+                price.innerText = newPrice;
+
+                cartCalc()
+
+
+
+            })
+
+        });
         var plusBtns = document.querySelectorAll('.plus');
         var minusBtns = document.querySelectorAll('.minus');
         var qtyInputs = document.querySelectorAll('.qty-input');
 
         console.log(minusBtns, plusBtns, qtyInputs);
+
+        // function test(whyy) {
+        //     var price = this.parentElement.nextElementSibling;
+        //     var newPrice = (price.getAttribute('data-price') * input.value).toLocaleString();
+        //     console.log(price);
+        //     price.innerText = newPrice;
+
+        // }
 
         // 加按鈕
         plusBtns.forEach(function(plusBtn) {
@@ -264,16 +281,16 @@
 
 
             fetch('/shopping_cart/update', {
-                method: 'POST',
-                body: formData
-            })
-            .then(function(response) {
-                return response.text();
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function(response) {
+                    return response.text();
 
-            }).then(function(data) {
-                console.log(data);
-                input.value = data;
-            })
+                }).then(function(data) {
+                    console.log(data);
+                    input.value = data;
+                })
 
         }
 
@@ -330,9 +347,9 @@
 
         })
 
+
         //  下顯示
 
-        cartCalc()
 
         function cartCalc() {
             var totalQty = 0;
@@ -380,7 +397,22 @@
 
         }
 
+        // 購物車空時-失敗
+
     </script>
+        @if (Session::get('message'))
+        <script>
+            Swal.fire({
+                icon:'warning',
+                title:'{{Session::get("message")}}',
+                showConfirmButton:false,
+                timmer:700
+            });
+        
+        
+        </script>
+            
+        @endif
 
 
 
