@@ -8,216 +8,114 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/cart.vol.01.css') }}">
 
 @endsection
 
 @section('main')
 
-    <main>
-        <section style="background-color: #D1D5DB;" class="carts">
-            <div class="cart container d-flex justify-content-center align-items-center flex-column">
-
-                <div class="row pl-5 pr-5 pt-0" style="width: 100%;">
-                    <div class="row d-flex justify-content-center align-items-start flex-column" style="width: 100%;">
-                        <h3 class="text-left" style="font-weight: 800;">購物車</h3>
-                    </div>
-                </div>
-
-                <div class="row pl-5 pr-5 mb-5 d-flex justify-content-center align-items-center" style="width: 100%;">
-
-                    <div class="pins row d-flex justify-content-between align-items-center">
-
-                        <div class="pin d-flex justify-content-center align-items-center flex-column">
-                            <div class="p-1 mb-2 rounded-circle text-center d-flex justify-content-center align-items-center"
-                                style="background-color: #10b981;width: 40px;height: 40px;color: white;">1
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-gogo rounded-pill" role="progressbar" style="width: 100%"
-                                aria-valuenow="15" aria-valuemin="25" aria-valuemax="25">
-                            </div>
-                        </div>
-
-                        <div class="pin d-flex justify-content-center align-items-center flex-column">
-                            <div class="p-1 mb-2 rounded-circle text-center d-flex justify-content-center align-items-center"
-                                style="background-color: #10b981;width: 40px;height: 40px;color: white;">2
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-gogo rounded-pill" role="progressbar" style="width: 40%"
-                                aria-valuenow="15" aria-valuemin="25" aria-valuemax="25">
-                            </div>
-                        </div>
-
-                        <div class="pin d-flex justify-content-center align-items-center flex-column">
-                            <div class="p-1 mb-2 rounded-circle text-center d-flex justify-content-center align-items-center"
-                                style="background-color: #ffffff;width: 40px;height: 40px;color: black;">3</div>
-
-                        </div>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-gogo rounded-pill" role="progressbar" style="width: 0%"
-                                aria-valuenow="15" aria-valuemin="25" aria-valuemax="25">
-                            </div>
-                        </div>
-
-                        <div class="pin d-flex justify-content-center align-items-center flex-column">
-                            <div class="p-1 mb-2 rounded-circle text-center d-flex justify-content-center align-items-center"
-                                style="background-color: #ffffff;width: 40px;height: 40px;color: black;">4</div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="fake-hr"></div>
-
-                {{-- 之後要放進去 --}}
-                <section>
-                    <form action="" method="POST">
-                        @csrf
-                    </form>
-
-                </section>
-
-                <div class="row pl-5 pr-5 pt-3" style="width: 100%;">
-                    <div class="row d-flex justify-content-center align-items-start flex-column" style="width: 100%;">
-                        <h4 class="text-left" style="font-weight: normal;">
-                            付款方式
-                        </h4>
-                    </div>
-                </div>
-
-                <div class="container p-0 pt-3 pl-5 pr-5">
-                    <div class="row d-flex justify-content-start pl-5 align-items-center">
-
-                        <label class="form-check-label" for="payment">
-                            <input class="form-check-input" type="radio" name="payment" value="visa" @if ($payment == "visa")
-                                
-                            @endif  required>
-                            信用卡付款
-                        </label>
-
-                        <div class="fake-hr"></div>
-                    </div>
-                    <div class="row d-flex justify-content-start pl-5 align-items-center">
-
-                        <label class="form-check-label" for="payment">
-                            <input class="form-check-input" type="radio" name="payment" value="atm" @if ($payment == "atm")
-                                
-                            @endif required>
-                            網路 ATM
-                        </label>
-
-                        <div class="fake-hr"></div>
-                    </div>
-                    <div class="row d-flex justify-content-start pl-5 align-items-center">
-                        <label class="form-check-label" for="payment">
-                            <input class="form-check-input" type="radio" name="payment" value="cvs" @if ($payment == "cvs")
-                                
-                            @endif required>
-                            超商代碼
-                        </label>
-                        <div class="fake-hr"></div>
-                    </div>
-
-                </div>
-
-                <div class="row pl-5 pr-5 pt-3" style="width: 100%;">
-                    <div class="row d-flex justify-content-center align-items-start flex-column" style="width: 100%;">
-                        <h4 class="text-left" style="font-weight: normal;">運送方式</h4>
-                    </div>
-                </div>
-
-                <div class="container p-0 pt-3 pl-5 pr-5">
-                    <div class="row d-flex justify-content-start pl-5 align-items-center">
-                   
-                                <label class="form-check-label" for="shipment">
-                                    <input class="form-check-input" type="radio" name="shipment" value="home" @if ($shipment == "home")
-                                        
-                                    @endif required>
-                                    黑貓宅配
-                                </label>
-    
-                        <div class="fake-hr"></div>
-                    </div>
-                    <div class="row d-flex justify-content-start pl-5 align-items-center">
-                   
-                                <label class="form-check-label" for="shipment">
-                                    <input class="form-check-input" type="radio" name="shipment" value="store" @if ($shipment == "store")
-                                        
-                                    @endif required>
-                                    超商店到店
-                                </label>
-    
-                        <div class="fake-hr"></div>
-                    </div>
-                    
-
-                </div>
-                <div class="container p-0 pt-3 pl-5 pr-5">
-                    <div class="container p-0 m-0">
-
-                        <div class="row p-0">
-                            <div class="col-xl-9 col-lg-8 col-5"></div>
-                            <div class="col-xl-1 col-lg-2 col-3">數量:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">{{ \Cart::getTotalQuantity() }}</div>
-                        </div>
-
-                        @php
-                            $subTotal = \Cart::getSubTotal();
-                            $shipment = \Cart::getSubTotal() > 15000 ? 0 : 6000;
-                            
-                        @endphp
-
-                        <div class="row p-0">
-                            <div class="col-xl-9 col-lg-8 col-5"></div>
-                            <div class="col-xl-1 col-lg-2 col-3">小計:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
-                                {{ number_format($subTotal) }}
-                            </div>
-                        </div>
-
-
-                        <div class="row p-0">
-                            <div class="col-xl-9 col-lg-8 col-5"></div>
-                            <div class="col-xl-1 col-lg-2 col-3">運費:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
-                                {{ $shipment }}</div>
-                        </div>
-                        <div class="row p-0">
-                            <div class="col-xl-9 col-lg-8 col-5"></div>
-                            <div class="col-xl-1 col-lg-2 col-3">總計:</div>
-                            <div class="col-xl-2 col-lg-2 col-4 text-right p-0">
-                                {{ number_format($subTotal + $shipment) }}
-                            </div>
-                        </div>
-
-                        <div class="fake-hr"></div>
-                    </div>
-
-
-                    <div class="container p-0 pt-3 pl-5 pr-5">
-
-                        <div class="container d-flex justify-content-between" style="padding: 0;">
-                            <a href="/shopping_cart/list"><button type="button" class="btn btn-primary btn-lg pbr-color"
-                                    style="padding: 6px 30px;">Back</button></a>
-                            <a href="./cart.vol.03.html"><button type="button" class="btn btn-primary btn-lg pb-color"
-                                    style="padding: 6px 30px;">Next</button></a>
-                        </div>
-
-                    </div>
-
-                </div>
-
+<div class="container bg-light rounded py-5 px-5">
+    <h1 class="h3 font-weight-bold">購物車</h1>
+    <section class="pt-3">
+        <div class="d-flex justify-content-around position-relative align-items-center">
+            <div class="rounded-circle text-center text-white" style="width: 40px; height: 40px; line-height: 40px; background-color: #10B981;">1</div>
+            <div class="progress" style="width: 12%;max-width: 180px; height: 8px;">
+                <div class="progress-bar" role="progressbar" style="width: 100%;background-color: #6EE7B7;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+            <div class="rounded-circle text-center text-white" style="width: 40px; height: 40px; line-height: 40px; background-color: #10B981;">2</div>
+            <div class="progress" style="width: 12%;max-width: 180px; height: 8px;">
+                <div class="progress-bar" role="progressbar" style="width: 30%;background-color: #6EE7B7;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="rounded-circle text-center" style="width: 40px; height: 40px; line-height: 40px; background-color: #ffffff;">3</div>
+            <div class="progress" style="width: 12%;max-width: 180px; height: 8px;">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="rounded-circle text-center" style="width: 40px; height: 40px; line-height: 40px; background-color: #ffffff;">4</div>
+        </div>
+        <div id="process-text" class="d-flex justify-content-between px-2">
+            <div class="pt-2 pl-sm-2">確認購物車</div>
+            <div class="pt-2 pr-sm-3">付款與運送方式</div>
+            <div class="pt-2 mr-sm-4">填寫資料</div>
+            <div class="pt-2 pr-sm-2">完成訂購</div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <form action="/shopping_cart/payment/check" method="POST">
+            @csrf
+            <div>
+                <div>
+                    <h2 class="h4 pb-3">付款方式</h2>
+                    @php
+                        $payment = Session::get('payment');
+                    @endphp
+                    <label class="pl-5" style="font-size: 20px;">
+                        <input type="radio" name="payment" value="credit" @if ($payment == "credit") checked @endif required> 信用卡付款
+                    </label>
+                    <hr>
+                    <label class="pl-5" style="font-size: 20px;">
+                        <input type="radio" name="payment" value="atm" @if ($payment == "atm") checked @endif required> 網路 ATM
+                    </label>
+                    <hr>
+                    <label class="pl-5" style="font-size: 20px;">
+                        <input type="radio" name="payment" value="cvs" @if ($payment == "cvs") checked @endif required> 超商代碼
+                    </label>
+                </div>
+                <hr>
+                <div>
+                    <h2 class="h4 pb-3">運送方式</h2>
+                    @php
+                        $shipment = Session::get('shipment');
+                    @endphp
+                    <label class="pl-5" style="font-size: 20px;">
+                        <input type="radio" name="shipment" value="home" @if ($shipment == "home") checked @endif required>黑貓宅配
+                    </label>
+                    <hr>
+                    <label class="pl-5" style="font-size: 20px;">
+                        <input type="radio" name="shipment" value="store" @if ($shipment == "store") checked @endif required>超商店到店
+                    </label>
+                </div>
+                <hr>
+            </div>
+            <div>
+                <div class="d-flex flex-column align-items-end">
 
-        </section>
+                    <div class="d-flex justify-content-between" style="line-height: 28px; width: 236px;">
+                        <div class="text-black-50" style="font-size: 14px;">數量:</div>
+                        <div>{{\Cart::getTotalQuantity()}}</div>
+                    </div>
+
+                    @php
+                        $subTotal = \Cart::getSubTotal();
+                        $shipment = \Cart::getSubTotal() > 15000 ? 0 : 6000;
+                        
+                    @endphp
+
+                    <div class="d-flex justify-content-between" style="line-height: 28px;  width: 236px;">
+                        <div class="text-black-50" style="font-size: 14px;">小計:</div>
+                        <div>${{number_format($subTotal)}}</div>
+                    </div>
+                   
+                    <div class="d-flex justify-content-between" style="line-height: 28px;  width: 236px;">
+                        <div class="text-black-50" style="font-size: 14px;">運費:</div>
+                        <div>${{number_format($shipment)}}</div>
+                    </div>
+
+                    <div class="d-flex justify-content-between" style="line-height: 28px;  width: 236px;">
+                        <div class="text-black-50" style="font-size: 14px;">總計:</div>
+                        <div>${{number_format($subTotal+$shipment)}}</div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <div id="btn_box" class="d-flex justify-content-between align-items-center pt-1">
+                <a href="/shopping_cart/list" class="btn btn btn-outline-primary py-2 px-5">上一步</a>
+                <button class="btn btn-primary py-2 px-5 next">下一步</button>
+            </div>
+        </form>
+    </section>
+</div>
 
     @endsection
     @section('js')

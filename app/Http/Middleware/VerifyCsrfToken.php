@@ -11,7 +11,8 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
+    // 信用卡金流無須通過@csrf驗證
     protected $except = [
-        //
+        'cart_ecpay/return','cart_ecpay/notify'
     ];
 }

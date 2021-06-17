@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0892d4befa38f3231c24aa5a319311bd",
+    "content-hash": "40429eb30f747c757c46178d80abb7df",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4943,6 +4943,59 @@
             "time": "2020-07-13T06:12:54+00:00"
         },
         {
+            "name": "tsaiyihua/laravel-ecpay",
+            "version": "2.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tsaiyihua/laravel-ecpay.git",
+                "reference": "e004c6aa2f4a1d271791130431783d1bf73828f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tsaiyihua/laravel-ecpay/zipball/e004c6aa2f4a1d271791130431783d1bf73828f8",
+                "reference": "e004c6aa2f4a1d271791130431783d1bf73828f8",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^6|7.30.4|^8.40.0",
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TsaiYiHua\\ECPay\\ECPayServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TsaiYiHua\\ECPay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yihua Tsai",
+                    "email": "tsaiyihua@gmail.com"
+                }
+            ],
+            "description": "ecpay library for laravel",
+            "keywords": [
+                "ecpay",
+                "laravel",
+                "payment"
+            ],
+            "support": {
+                "issues": "https://github.com/tsaiyihua/laravel-ecpay/issues",
+                "source": "https://github.com/tsaiyihua/laravel-ecpay/tree/2.4.5"
+            },
+            "time": "2021-05-10T07:04:07+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v4.2.0",
             "source": {
@@ -5536,6 +5589,81 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "krlove/code-generator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krlove/code-generator.git",
+                "reference": "c1f0cb6898c5e378528c095d54623171e62ee1c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krlove/code-generator/zipball/c1f0cb6898c5e378528c095d54623171e62ee1c3",
+                "reference": "c1f0cb6898c5e378528c095d54623171e62ee1c3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Krlove\\CodeGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Code Generator",
+            "support": {
+                "issues": "https://github.com/krlove/code-generator/issues",
+                "source": "https://github.com/krlove/code-generator/tree/master"
+            },
+            "time": "2016-04-03T14:09:31+00:00"
+        },
+        {
+            "name": "krlove/eloquent-model-generator",
+            "version": "1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krlove/eloquent-model-generator.git",
+                "reference": "462c86c318019b40a07d46eda551337c310b56f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krlove/eloquent-model-generator/zipball/462c86c318019b40a07d46eda551337c310b56f4",
+                "reference": "462c86c318019b40a07d46eda551337c310b56f4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.5 || ^3.0",
+                "illuminate/database": "^5.0 || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^5.0 || ^6.0|| ^7.0 || ^8.0",
+                "krlove/code-generator": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Krlove\\EloquentModelGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Eloquent Model Generator",
+            "support": {
+                "issues": "https://github.com/krlove/eloquent-model-generator/issues",
+                "source": "https://github.com/krlove/eloquent-model-generator/tree/1.3.7"
+            },
+            "time": "2021-03-07T10:50:10+00:00"
         },
         {
             "name": "mockery/mockery",

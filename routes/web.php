@@ -93,11 +93,27 @@ Route::prefix('shopping_cart')->group(function(){
     Route::get('/content','ShoppingCartController@content');
     // 看看購物車
     Route::get('/list','ShoppingCartController@list');
+    // 刪除購物車項目
+    Route::post('/delete','ShoppingCartController@delete');
     // 更新購物車
     Route::post('/update','ShoppingCartController@update');
     // 貨款資訊
     Route::get('/payment','ShoppingCartController@payment');
+    // 
+    Route::post('/payment/check', 'ShoppingCartController@paymentCheck');
+    // 
+    Route::post('/information/check', 'ShoppingCartController@informationCheck');
 
+    
+});
+
+// 購物車金流👇
+Route::prefix('cart_ecpay')->group(function(){
+    //當消費者付款完成後，綠界會將付款結果參數以幕後(Server POST)回傳到該網址。
+    Route::post('notify', 'ShoppingCartController@notifyUrl')->name('notify');
+
+    //付款完成後，綠界會將付款結果參數以幕前(Client POST)回傳到該網址
+    Route::post('return', 'ShoppingCartController@returnUrl')->name('return');
 });
 
 

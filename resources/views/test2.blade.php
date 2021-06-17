@@ -1,150 +1,48 @@
-{{-- 繼承哪一個模板 --}}
-@extends('layouts.create')
+<div class="city-selector-set form-group col-md-6">
 
-@section('title')
-    Digipack-create
-@endsection
+    <label for="inputCity">地址</label>
 
-@section('css')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-    <link rel="stylesheet" href="{{ asset('/css/create_product.css') }}">
-
-@endsection
-
-@section('main')
-    <h1 class="main-title p-3">請開始商品的創建</h1>
-    {{-- 首頁     /index --}}
-    {{-- 新增頁面 /news/create --}}
-    {{-- 儲存頁面 /news/store --}}
-    {{-- 編輯頁面 /news/edit --}}
-    {{-- 更新頁面 /news/update --}}
-    {{-- 刪除頁面 /news/delete(destory) --}}
-
-    {{-- action 觸發路徑 --}}
-
-    <form action="/product" method="POST" class="mx-auto" enctype="multipart/form-data">
-        @csrf
-        {{-- @csrf 阻擋攻擊 與POST必同時使用 --}}
-
-        {{-- 使Iinput hidden name = _token value=隨機字串 --}}
-        <div class="all">
+    <div>
+        <!-- 縣市選單 -->
+        <select class="county form-control shadow-none col-5" name="county " placeholder="城市"></select>
+    </div>
+    <div>
+        <!-- 區域選單 -->
+        <select class="district form-control shadow-none col-5" name="district" placeholder="區域"></select>
+    </div>
+    <div>
+        <!-- 郵遞區號欄位 (建議加入 readonly 屬性，防止修改) -->
+        <input class="zipcode form-control shadow-none col-5" name="zipcode" type="text" size="3" readonly
+            placeholder="郵遞區號">
+    </div>
+</div>
 
 
-            <div class="form-group">
-                <label for="">名稱</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+<p>
+    綠界交易方式
 
-            <div class="form-group">
-                <label for="">價格</label>
-                <input type="text" id="price" name="price" required>
-            </div>
+    1.交易總金額
+    2.使用者ID
+    3.商品名稱
+    4.付款方式
+    5.運送方式
+    6.訂單資料
+    7.姓名
+    8.電話
+    9.信箱
+    10.地址
+    11.備註
+    12.訂單編號
+    13.訂單狀態
+    14.付款狀態
 
-            <div class="form-group">
-                <label for="">類型</label>
-                <select name="type_id" id="type_id">
-                    @foreach ($productTypes as $types)
-                        <option value="{{ $types->id }}">{{ $types->name }}</option>
-                    @endforeach
-                </select>
-
-                {{-- <input type="text" id="type_id" name="type_id" required> --}}
-            </div>
-
-
-            <div class="form-group">
-                <label for="">主要圖片</label>
-                <input type="file" accept="image/*" id="img" name="img" required>
-            </div>
-
-            <div class="form-group">
-                <label for="">其他圖片</label>
-                <input type="file" accept="image/*" id="imgs" name="imgs[]" multiple>
-            </div>
-
-            <div class="form-group">
-                <label for="">描述</label>
-                <textarea id="summernote" name="description" cols="30" rows="10" required></textarea>
-            </div>
-
-
-        </div>
-        <button type="submit" class="submit-btn-purple">提交</button>
-        {{-- <button type="button">提交</button> --}}
-    </form>
-
-
-    <script>
-        // 文件準備好才執行
-        // $(document).ready(function () {
-        // })
-
-        $('#summernote').summernote({
-            callbacks: {
-                onImageUpload: function(files) {
-                    var formData = new FormData();
-                    formData.append('_token', '{{ csrf_token() }}');
-
-                    for (var i = 0; i < files.length; i++) {
-                        formData.append('imgs[]', files[i]);
-                    }
-
-                    console.log(files);
-                    console.log([...files]);
-
-                    // for(var i = 0; i < files.length; i++){
-                    //     formDate.append('imgs[]', files[i]);
-                    //     console.log(1);
-                    // }
-
-                    fetch('/summernote/store', {
-                            method: 'POST',
-                            body: formData
-                        })
-
-                        .then(function(response) {
-                            return response.json();
-                        })
-
-                        .then(function(path) {
-                            console.log(path);
-                            $('#summernote').summernote('insertImage', path, 'img');
-                        });
+    
 
 
 
-                    // onImageUpload: function(file) {
-                    //     console.log(file);
-                    //     var formData = new FormData();
-                    //     console.log(formData);
-                    //     formData.append('_token', '{{ csrf_token() }}');
-                    //     formData.append('img', file[0]);
-                    //     console.log(formData);
-                    //     fetch('/summernote/store', {
-                    //             method: 'POST',
-                    //             body: formData
-                    //         })
-                    //         .then(function(response) {
-                    //             return response.text();
-                    //         })
+    ReturnURL 接收回傳結果 
+    OrderResultUrl 顯示結果畫面
 
-                    //         .then(function(path) {
-                    //             console.log(path);
-                    //             $('#summernote').summernote('insertImage', path);
-                    //         });
+    ChoosePayment
 
-                }
-            }
-
-        });
-
-    </script>
-
-@endsection
-
-@section('js')
-@endsection
+</p>

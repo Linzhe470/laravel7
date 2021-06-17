@@ -174,6 +174,9 @@ return [
 
         # 購物車:laravelshoppingcart
         Darryldecode\Cart\CartServiceProvider::class,
+
+        # 自動建立表單:Krlove
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         
 
         App\Providers\AppServiceProvider::class,

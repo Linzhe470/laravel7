@@ -8,8 +8,6 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/cart.vol.01.css') }}">
     <style>
         .card-img-top {
@@ -37,6 +35,14 @@
         .qty-input {
             width: 80px;
             text-align: right;
+        }
+
+        .del-btn {
+            background-color: salmon;
+        }
+
+        .del-btn:hover {
+            background-color: red;
         }
 
     </style>
@@ -119,7 +125,8 @@
 
                     <div class="row d-flex justify-content-between align-items-center">
 
-                        <div class="col-8 d-flex align-items-start">
+                        <div class="col-8 d-flex align-items-center ">
+                            <button type="button" class="del-btn mr-5" data-id="{{ $item->id }}">X</button>
                             <div class="card-img-top mr-3 " style="background-image:url('{{ $item->attributes->img }}')">
                             </div>
 
@@ -229,19 +236,12 @@
             })
 
         });
+        var delBtns = document.querySelectorAll('.del-btn');
         var plusBtns = document.querySelectorAll('.plus');
         var minusBtns = document.querySelectorAll('.minus');
         var qtyInputs = document.querySelectorAll('.qty-input');
 
-        console.log(minusBtns, plusBtns, qtyInputs);
-
-        // function test(whyy) {
-        //     var price = this.parentElement.nextElementSibling;
-        //     var newPrice = (price.getAttribute('data-price') * input.value).toLocaleString();
-        //     console.log(price);
-        //     price.innerText = newPrice;
-
-        // }
+        console.log(delBtns, minusBtns, plusBtns, qtyInputs);
 
         // 加按鈕
         plusBtns.forEach(function(plusBtn) {
@@ -265,6 +265,60 @@
                 cartCalc()
 
             });
+        });
+
+        // 刪除商品
+
+        delBtns.forEach(function(delBtn) {
+
+            delBtn.addEventListener('click', function() {
+
+                var delBtnarea = this;
+                var productId = this.getAttribute('data-id');
+                var formData = new FormData();
+
+                Swal.fire({
+                    title: '刪除這個品項?',
+                    text: "刪除後便不能返回",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#ccc',
+                    confirmButtonText: '確定刪除',
+                    cancelButtonText: '取消'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formData.append('_token', '{{ csrf_token() }}');
+                        formData.append('productId', productId);
+
+
+                        fetch('/shopping_cart/delete', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(function(response) {
+                                return response.text();
+
+                            }).then(function(data) {
+                                console.log(data);
+                                if (data == 'success') {
+
+                                    delBtnarea.parentElement.parentElement.remove();
+                                    cartCalc()
+
+                                }
+
+                            })
+                    }
+                })
+
+
+
+
+
+            })
+
+
         });
 
 
@@ -292,6 +346,7 @@
                     input.value = data;
                 })
 
+
         }
 
         // 減按鈕
@@ -306,7 +361,7 @@
                 if (input.value <= 1) {
                     input.value = 1;
                 }
-                updateData(input, -1)
+                updateData(input, -1);
 
 
 
@@ -331,9 +386,12 @@
                 var input = this;
                 if (input.value <= 1) {
                     input.value = 1;
+                    updateData(input, -1);
                 }
                 console.log(input.value);
                 // 更改p content
+
+
 
                 var price = this.parentElement.nextElementSibling;
                 var newPrice = (price.getAttribute('data-price') * input.value).toLocaleString();
@@ -400,21 +458,6 @@
         // 購物車空時-失敗
 
     </script>
-        @if (Session::get('message'))
-        <script>
-            Swal.fire({
-                icon:'warning',
-                title:'{{Session::get("message")}}',
-                showConfirmButton:false,
-                timmer:700
-            });
-        
-        
-        </script>
-            
-        @endif
-
-
 
 
 

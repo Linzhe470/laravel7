@@ -259,7 +259,6 @@
     <!--引用dataTables.js-->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-
     <script>
         const burger = document.getElementById("burger");
         const menu = document.getElementById("menu");
@@ -267,6 +266,25 @@
         burger.addEventListener("click", () => menu.classList.toggle("hidden"));
 
     </script>
+
+
+{{-- 如果購物車沒東西就顯示 --}}
+@if (Session::get('icon'))
+<script>
+    Swal.fire({
+        icon:'{{Session::get("icon")}}',
+        title:'{{Session::get("title")}}',
+        text:'{{Session::get("message")}}',
+        showConfirmButton:false,
+    });
+
+
+</script>
+    
+@endif
+
+
+
 
     {{-- 加入購物車 --}}
     <script>
